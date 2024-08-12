@@ -30,10 +30,10 @@ public class PlayerController : MonoBehaviour
         rb.velocity = (moveHorizontal + moveVertical) * MoveSpeed;
 
         //view
-        mouseInput = new Vector2 (Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y") * MouseSensetivity);
+        mouseInput = new Vector2 (Input.GetAxisRaw("Mouse X") * MouseSensetivity, 0f);
 
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z - mouseInput.x);
 
-        viewCam.localRotation = Quaternion.Euler(viewCam.localRotation.eulerAngles + new Vector3(0f, mouseInput.y, 0f));
+        //viewCam.localRotation = Quaternion.Euler(viewCam.localRotation.eulerAngles + new Vector3(0f, mouseInput.y, 0f));
     }
 }
