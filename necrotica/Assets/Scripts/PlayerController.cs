@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     public Rigidbody2D rb;
 
     public float MoveSpeed = 6f;
-    public float MouseSensetivity = 4f;
+    public float MouseSensetivity = 6f;
 
     private Vector2 moveInput;
     private Vector2 mouseInput;
@@ -17,6 +19,11 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         
+    }
+
+    private void Awake()
+    {
+        instance = this;
     }
 
     void Update()
