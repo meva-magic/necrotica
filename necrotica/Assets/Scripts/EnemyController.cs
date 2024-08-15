@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public bool Alive = true;
-
     public float PlayerRange;
+
+    public bool inPlayerRange = false;
 
     public Rigidbody2D rb;
 
@@ -34,6 +34,7 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage()
     {
+        AudioManager.instance.Play("EnemyHit");
         Destroy(gameObject);
     }
 }
