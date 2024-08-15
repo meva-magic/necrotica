@@ -14,6 +14,6 @@ public class Billboard : MonoBehaviour
 
     void Update()
     {
-        transform.LookAt(PlayerController.instance.transform.position, -Vector3.forward);
+        transform.LookAt(PlayerMovement.instance.transform.position, -Vector3.forward);
     }
 }

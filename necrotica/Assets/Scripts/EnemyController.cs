@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float PlayerRange = 6f;
+    public bool Alive = true;
+
+    public float PlayerRange;
 
     public Rigidbody2D rb;
 
     public float moveSpeed;
-
-    public bool Alive = true;
 
     void Start()
     {
@@ -19,9 +19,9 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) < PlayerRange)
+        if (Vector3.Distance(transform.position, PlayerMovement.instance.transform.position) < PlayerRange)
         {
-            Vector3 playerDirection = PlayerController.instance.transform.position - transform.position;
+            Vector3 playerDirection = PlayerMovement.instance.transform.position - transform.position;
 
             rb.velocity = playerDirection.normalized * moveSpeed;
         }
@@ -30,5 +30,10 @@ public class EnemyController : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
+    }
+
+    public void TakeDamage()
+    {
+        Destroy(gameObject);
     }
 }
