@@ -6,14 +6,9 @@ public class PlayerAttack : MonoBehaviour
 {
     public Camera viewCam;
 
-    void Start()
+    private void Update()
     {
-        
-    }
-
-    void Update()
-    {
-        if(Input.GetMouseButton(0))
+        if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             Ray ray = viewCam.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
             RaycastHit hit;

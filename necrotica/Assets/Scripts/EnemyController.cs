@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float PlayerRange;
+    private int health = 3;
 
-    public bool inPlayerRange = false;
+    public float PlayerRange;
 
     public Rigidbody2D rb;
 
-    public float moveSpeed;
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
+    private float moveSpeed = 3;
+    
+    
+    private void Update()
     {
         if (Vector3.Distance(transform.position, PlayerMovement.instance.transform.position) < PlayerRange)
         {
@@ -35,6 +31,10 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage()
     {
         AudioManager.instance.Play("EnemyHit");
-        Destroy(gameObject);
+        health -= 1;
+
+        if(health <= 0)
+        {Destroy(gameObject);}
     }
 }
+
