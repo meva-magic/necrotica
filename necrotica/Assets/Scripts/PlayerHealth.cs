@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
         if(currentHealth <= 0)
         {
             deathScreen.SetActive(true);
-            //isDead = true;
+            isDead = true;
         }
     }
 

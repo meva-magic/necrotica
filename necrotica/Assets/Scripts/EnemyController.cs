@@ -10,7 +10,18 @@ public class EnemyController : MonoBehaviour
 
     public Rigidbody2D rb;
 
-    private float moveSpeed = 3;
+    public float moveSpeed;
+
+
+    public bool shootingType;
+
+    public float fireRate = .5f;
+
+    private float shotCounter;
+
+    public GameObject bullet;
+
+    public Transform firePoint;
     
     
     private void Update()
@@ -20,6 +31,16 @@ public class EnemyController : MonoBehaviour
             Vector3 playerDirection = PlayerController.instance.transform.position - transform.position;
 
             rb.velocity = playerDirection.normalized * moveSpeed;
+        }
+
+        if(shootingType)
+        {
+            shotCounter -= Time.deltaTime;
+            if(shotCounter <= 0)
+            {
+                Instantiate(bullet, firePoint.position, firePoint.rotation);
+                shotCounter = fireRate;
+            }
         }
 
         else
