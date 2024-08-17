@@ -15,9 +15,9 @@ public class EnemyController : MonoBehaviour
     
     private void Update()
     {
-        if (Vector3.Distance(transform.position, PlayerMovement.instance.transform.position) < PlayerRange)
+        if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) < PlayerRange)
         {
-            Vector3 playerDirection = PlayerMovement.instance.transform.position - transform.position;
+            Vector3 playerDirection = PlayerController.instance.transform.position - transform.position;
 
             rb.velocity = playerDirection.normalized * moveSpeed;
         }
