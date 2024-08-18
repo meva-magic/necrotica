@@ -30,7 +30,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            PlayerController.instance.TakeDamage(10);
+            PlayerHealth.instance.TakeDamage(10);
 
             Destroy(gameObject);
         }

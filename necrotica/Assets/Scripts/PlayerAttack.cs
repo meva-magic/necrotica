@@ -6,9 +6,11 @@ public class PlayerAttack : MonoBehaviour
 {
     public Camera viewCam;
 
+    public GameObject Sword;
+
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Mouse0) && Sword.activeSelf == true)
         {
             Ray ray = viewCam.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
             RaycastHit hit;

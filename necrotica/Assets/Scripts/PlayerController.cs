@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,22 +15,25 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController instance;
 
-
-
-    public int currentHealth;
-    private int maxHealth = 100;
-
     private bool isDead = false;
 
-    public GameObject deathScreen;
 
 
-
-    void Start()
+    private void OnEnable()
     {
-        currentHealth = maxHealth;
+        PlayerHealth.OnPlayerDeath += DisablePlayerMovement;
     }
 
+    private void OnDisable()
+    {
+        PlayerHealth.OnPlayerDeath -= DisablePlayerMovement;
+    }
+
+
+    private void Start()
+    {
+        EnablePlayerMovement();
+    }
 
 
     private void Awake()
@@ -38,13 +42,10 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
     private void Update()
     {
-        if(!isDead)
-        {
             Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            //Cursor.visible = false;
             
             //movement
             moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -59,30 +60,18 @@ public class PlayerController : MonoBehaviour
             mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * mouseSensetivity;
 
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z - mouseInput.x);
-        }
     }
 
 
-
-    public void TakeDamage(int damageAmount)
+    private void EnablePlayerMovement()
     {
-        currentHealth -= damageAmount;
-
-        if(currentHealth <= 0)
-        {
-            deathScreen.SetActive(true);
-            isDead = true;
-        }
+        //animator.enabled = true;
+        rb.bodyType = RigidbodyType2D.Dynamic;
     }
 
-
-
-    public void Heal(int healAmount)
+    private void DisablePlayerMovement()
     {
-        currentHealth += healAmount;
-        if(currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
+        //animator.enabled = false;
+        rb.bodyType = RigidbodyType2D.Static;
     }
 }
