@@ -595,7 +595,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &624605396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,7 +878,7 @@ GameObject:
   - component: {fileID: 931986407}
   - component: {fileID: 931986411}
   m_Layer: 5
-  m_Name: UI Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1282,7 +1282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -17.6}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 130, y: -509}
+  m_AnchoredPosition: {x: -1, y: -509}
   m_SizeDelta: {x: 2000.434, y: 614.297}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1498658909
@@ -1786,6 +1786,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6415088019529124453, guid: 6d15c7d44c73fc54fa9620460dd9e247, type: 3}
     - target: {fileID: 358251729848038299, guid: e0acf135e51bd0b45a6fc32e882cac37, type: 3}
+      propertyPath: fireRate
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 358251729848038299, guid: e0acf135e51bd0b45a6fc32e882cac37, type: 3}
       propertyPath: firePoint
       value: 
       objectReference: {fileID: 1276260033}
@@ -1864,5 +1868,5 @@ SceneRoots:
   - {fileID: 1866154959}
   - {fileID: 1091087917}
   - {fileID: 1014863670}
-  - {fileID: 624605399}
   - {fileID: 1733899346}
+  - {fileID: 624605399}

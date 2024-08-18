@@ -15,9 +15,6 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController instance;
 
-    private bool isDead = false;
-
-
 
     private void OnEnable()
     {
@@ -44,9 +41,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-            Cursor.lockState = CursorLockMode.Locked;
-            //Cursor.visible = false;
-            
             //movement
             moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 

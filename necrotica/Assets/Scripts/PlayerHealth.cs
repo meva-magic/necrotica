@@ -12,8 +12,6 @@ public class PlayerHealth : MonoBehaviour
 
     private bool isDead;
 
-    //public GameObject deathScreen;
-
     public static PlayerHealth instance;
 
     void Start()

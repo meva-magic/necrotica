@@ -15,12 +15,9 @@ public class PlayerAttack : MonoBehaviour
             Ray ray = viewCam.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
             RaycastHit hit;
 
-            if(Physics.Raycast(ray, out hit))
+            if(Physics.Raycast(ray, out hit) && hit.transform.tag == "Enemy")
             {                
-                if(hit.transform.tag == "Enemy")
-                {
-                    hit.transform.parent.GetComponent<EnemyController>().TakeDamage();
-                }
+                hit.transform.parent.GetComponent<EnemyController>().TakeDamage();
             }
         }
     }
