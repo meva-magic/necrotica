@@ -22,7 +22,7 @@ public class EnemyController : MonoBehaviour
     public GameObject bullet;
 
     public Transform firePoint;
-    
+
     
     private void Update()
     {

@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class SwordAttack : MonoBehaviour
 {
+    public float AttackRange;
+
     public Camera viewCam;
 
     public GameObject Sword;
+
+    private Vector3 distance;
 
     private void Update()
     {
