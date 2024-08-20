@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public static event Action OnPlayerDeath; //action delegate returns void and doesnt take parametres
 
     public int currentHealth;
-    private int maxHealth = 100;
+    private int maxHealth = 1;
 
     private bool isDead;
 
@@ -26,14 +26,17 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage()
     {
+        OnPlayerDeath?.Invoke();
+        /*
         currentHealth -= damageAmount;
 
         if(currentHealth <= 0)
         {
             OnPlayerDeath?.Invoke();
         }
+        */
     }
     
 

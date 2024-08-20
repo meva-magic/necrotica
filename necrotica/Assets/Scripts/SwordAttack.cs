@@ -10,7 +10,7 @@ public class SwordAttack : MonoBehaviour
 
     public GameObject Sword;
 
-    private Vector3 distance;
+    public float attackRange = 2f;
 
     private void Update()
     {
@@ -19,7 +19,7 @@ public class SwordAttack : MonoBehaviour
             Ray ray = viewCam.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
             RaycastHit hit;
 
-            if(Physics.Raycast(ray, out hit) && hit.transform.tag == "Enemy")
+            if(Physics.Raycast(ray, out hit) && (hit.distance <= attackRange) && hit.transform.tag == "Enemy")
             {                
                 hit.transform.parent.GetComponent<EnemyController>().TakeDamage();
             }

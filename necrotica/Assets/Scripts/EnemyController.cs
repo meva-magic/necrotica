@@ -23,6 +23,8 @@ public class EnemyController : MonoBehaviour
 
     public Transform firePoint;
 
+    private GameObject stains;
+
     
     private void Update()
     {
@@ -55,7 +57,8 @@ public class EnemyController : MonoBehaviour
         health -= 1;
 
         if(health <= 0)
-        {Destroy(gameObject);}
+        {
+            Destroy(gameObject);
+        }
     }
 }
-

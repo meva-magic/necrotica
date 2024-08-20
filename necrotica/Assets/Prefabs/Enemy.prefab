@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 6749416399463694449}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,6 +170,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerRange: 5
   rb: {fileID: 6749416399463694449}
+  moveSpeed: 0
+  shootingType: 0
+  fireRate: 0.5
+  bullet: {fileID: 0}
+  firePoint: {fileID: 0}
 --- !u!58 &3049782599404802346
 CircleCollider2D:
   m_ObjectHideFlags: 0

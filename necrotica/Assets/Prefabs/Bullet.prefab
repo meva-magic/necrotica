@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 2
+  destroyTimer: 2.5
   rb: {fileID: 7882807344810183545}
 --- !u!50 &7882807344810183545
 Rigidbody2D:

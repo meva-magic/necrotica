@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     public float bulletSpeed;
+    [SerializeField] private float destroyTimer;
 
     public Rigidbody2D rb;
 
@@ -18,7 +19,7 @@ public class EnemyBullet : MonoBehaviour
         direction.Normalize();
         direction = direction * bulletSpeed;
 
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, destroyTimer);
     }
 
     void Update()
@@ -30,7 +31,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            PlayerHealth.instance.TakeDamage(10);
+            PlayerHealth.instance.TakeDamage();
 
             Destroy(gameObject);
         }
