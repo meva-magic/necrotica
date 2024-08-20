@@ -40,6 +40,8 @@ public class EnemyController : MonoBehaviour
                 if(shotCounter <= 0)
                 {
                     Instantiate(bullet, firePoint.position, firePoint.rotation);
+                    AudioManager.instance.Play("EnemyAttack");
+
                     shotCounter = fireRate;
                 }
             }
@@ -50,6 +52,16 @@ public class EnemyController : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
     }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Player")
+        {
+            PlayerHealth.instance.TakeDamage();
+        }
+    }
+
 
     public void TakeDamage()
     {

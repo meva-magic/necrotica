@@ -10,7 +10,7 @@ public class SwordPickup : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            AudioManager.instance.Play("SwordPickup");
+            AudioManager.instance.Play("Pickup");
 
             Destroy(gameObject);
 
