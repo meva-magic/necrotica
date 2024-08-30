@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController instance;
 
+    public Animator anim;
+
 
     private void OnEnable()
     {
@@ -54,7 +56,18 @@ public class PlayerController : MonoBehaviour
             mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * mouseSensetivity;
 
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z - mouseInput.x);
+
+            if(moveInput != Vector2.zero)
+            {
+                anim.SetBool("isMoving", true);
+            }
+            
+            else
+            {
+                anim.SetBool("isMoving", false);
+            }
     }
+
 
 
     private void EnablePlayerMovement()
