@@ -28,6 +28,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage()
     {
+        AudioManager.instance.Play("Player death");
+
         OnPlayerDeath?.Invoke();
 /*
         currentHealth -= 1;

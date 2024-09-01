@@ -48,6 +48,8 @@ public class UIManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.R))
         {
+            AudioManager.instance.Play("Button press");
+
             RestartLevel();
         }
     }

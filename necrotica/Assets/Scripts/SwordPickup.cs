@@ -10,11 +10,13 @@ public class SwordPickup : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            AudioManager.instance.Play("Pickup");
+            AudioManager.instance.Play("Sword pickup");
 
             Destroy(gameObject);
 
             Sword.SetActive(true);
+
+            AudioManager.instance.Play("Level music");
         }
     }
 }

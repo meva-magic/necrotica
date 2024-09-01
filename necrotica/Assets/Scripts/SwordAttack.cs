@@ -16,11 +16,13 @@ public class SwordAttack : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Mouse0) && Sword.activeSelf == true)
         {
+            AudioManager.instance.Play("Sword attack");
+            
             Ray ray = viewCam.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
             RaycastHit hit;
 
             if(Physics.Raycast(ray, out hit) && (hit.distance <= attackRange) && hit.transform.tag == "Enemy")
-            {                
+            {
                 hit.transform.parent.GetComponent<EnemyController>().TakeDamage();
             }
         }

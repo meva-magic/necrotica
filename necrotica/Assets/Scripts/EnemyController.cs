@@ -40,7 +40,7 @@ public class EnemyController : MonoBehaviour
                 if(shotCounter <= 0)
                 {
                     Instantiate(bullet, firePoint.position, firePoint.rotation);
-                    AudioManager.instance.Play("EnemyAttack");
+                    AudioManager.instance.Play("Enemy attack");
 
                     shotCounter = fireRate;
                 }
@@ -65,11 +65,13 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage()
     {
-        AudioManager.instance.Play("EnemyHit");
+        AudioManager.instance.Play("Enemy hit");
         health -= 1;
 
         if(health <= 0)
         {
+            AudioManager.instance.Play("Enemy death");
+
             Destroy(gameObject);
         }
     }
