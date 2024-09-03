@@ -8,6 +8,6 @@ public class SceneMusic : MonoBehaviour
 
     void Start()
     {
-        AudioManager.instance.Play("Level music no sword");
+        //AudioManager.instance.Play("Level music no sword");
     }
 }

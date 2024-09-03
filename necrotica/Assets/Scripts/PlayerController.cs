@@ -60,11 +60,13 @@ public class PlayerController : MonoBehaviour
             if(moveInput != Vector2.zero)
             {
                 anim.SetBool("isMoving", true);
+                //AudioManager.instance.Play("Footsteps");
             }
             
             else
             {
                 anim.SetBool("isMoving", false);
+                //AudioManager.instance.Stop("Footsteps");
             }
     }
 

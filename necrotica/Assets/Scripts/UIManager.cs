@@ -42,6 +42,8 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         LockCursor();
+
+        AudioManager.instance.Play("Level music");
     }
 
     private void Update()

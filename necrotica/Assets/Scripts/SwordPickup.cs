@@ -15,8 +15,6 @@ public class SwordPickup : MonoBehaviour
             Destroy(gameObject);
 
             Sword.SetActive(true);
-
-            AudioManager.instance.Play("Level music");
         }
     }
 }
