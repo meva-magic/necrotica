@@ -23,7 +23,17 @@ public class EnemyController : MonoBehaviour
 
     public Transform firePoint;
 
-    private GameObject stains;
+    private Shake shake;
+
+    public SpriteRenderer rend;
+    public GameObject effect;    
+    public GameObject bloodStain;
+
+
+    void Start()
+    {
+        //shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
+    }
 
     
     private void Update()
@@ -72,7 +82,30 @@ public class EnemyController : MonoBehaviour
         {
             AudioManager.instance.Play("Enemy death");
 
+            Instantiate(effect, transform.position, Quaternion.identity);
+
+            GameObject newBloodStain = Instantiate(bloodStain, transform.position, transform.rotation) as GameObject;
+           
+            rend = newBloodStain.GetComponent<SpriteRenderer>();
+            StartCoroutine(Fade());
+            Destroy(newBloodStain, 2f);
+
             Destroy(gameObject);
+        }
+    }
+
+    IEnumerator Fade()
+    {
+        float alphaVal = rend.color.a;
+        Color tmp = rend.color;
+
+        while (rend.color.a < 1)
+        {
+            alphaVal -= 0.01f;
+            tmp.a = alphaVal;
+            rend.color = tmp;
+
+            yield return new WaitForSeconds(0.06f);
         }
     }
 }

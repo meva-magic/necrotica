@@ -10,7 +10,7 @@ public class SwordAttack : MonoBehaviour
 
     public GameObject Sword;
 
-    public float attackRange = 2f;
+    public float attackRange = 3f;
 
     private void Update()
     {

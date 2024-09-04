@@ -49,7 +49,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -111,7 +111,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: e84ffd47a7b676a4e9b2f7ad9396daf2, type: 3}
-  m_Color: {r: 0.6415094, g: 0.10288349, b: 0.10288349, a: 1}
+  m_Color: {r: 0.74213827, g: 0.74213827, b: 0.74213827, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 8345490380218765528}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.74, y: -0.53, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -175,6 +175,9 @@ MonoBehaviour:
   fireRate: 0.5
   bullet: {fileID: 0}
   firePoint: {fileID: 0}
+  rend: {fileID: 0}
+  effect: {fileID: 0}
+  bloodStain: {fileID: 0}
 --- !u!58 &3049782599404802346
 CircleCollider2D:
   m_ObjectHideFlags: 0
