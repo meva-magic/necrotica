@@ -71,7 +71,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
     private void EnablePlayerMovement()
     {
         //animator.enabled = true;
