@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SceneMusic : MonoBehaviour
 {
-    public GameObject Sword;
+    //public GameObject Sword;
 
     void Start()
     {
-        //AudioManager.instance.Play("Level music no sword");
+        AudioManager.instance.Play("LevelMusic");
     }
 }

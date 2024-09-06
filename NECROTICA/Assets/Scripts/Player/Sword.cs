@@ -7,19 +7,21 @@ public class Sword : MonoBehaviour
     private BoxCollider swordTrigger;
     public EnemyManager enemyManager;
 
-    [SerializeField] private float range = 10f;
-    [SerializeField] private float verticalRange = 10f;
+    [SerializeField] private float range = 3f;
+    [SerializeField] private float verticalRange = 3f;
     [SerializeField] private float damage = 2f;
     
     [SerializeField] private float hitRate;
+    [SerializeField] private float hitRadius = 3f;
     [SerializeField] private float nextTimeToHit;
 
     [SerializeField] private LayerMask raycastLayerMask;
+    [SerializeField] private LayerMask enemyLayerMask;
 
     private void Start()
     {
         swordTrigger = GetComponent<BoxCollider>();
-        swordTrigger.size = new Vector3(2, verticalRange, range);
+        swordTrigger.size = new Vector3(1.5f, verticalRange, range);
         swordTrigger.center = new Vector3(0, 0, range * 0.5f);
     }
 
@@ -33,6 +35,14 @@ public class Sword : MonoBehaviour
 
     private void Hit()
     {
+        Collider[] enemyColliders;
+        enemyColliders = Physics.OverlapSphere(transform.position, hitRadius, enemyLayerMask);
+
+        foreach(var enemyCollider in enemyColliders)
+        {
+            enemyCollider.GetComponent<EnemyTrigger>().isTriggered = true;
+        }
+        
         foreach (var enemy in enemyManager.enemiesInTrigger)
         {
             var dir = enemy.transform.position - transform.position;
@@ -44,6 +54,11 @@ public class Sword : MonoBehaviour
                 if(hit.transform == enemy.transform)
                 {
                     enemy.TakeDamage(damage);
+                }
+
+                else
+                {
+                    AudioManager.instance.Play("SwordSwoosh");
                 }
             }
         }
