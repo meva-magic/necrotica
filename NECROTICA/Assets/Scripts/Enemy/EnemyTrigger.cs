@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class EnemyTrigger : MonoBehaviour
 {
+    private Transform player;
+    [SerializeField] private float awarenessRadius = 7;
+
     public bool isTriggered;
 
 
-    private void Update()
+    private void Start()
     {
-        if(isTriggered)
-        {
-        }
+        player = FindObjectOfType<PlayerMove>().transform;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if(other.transform.CompareTag("Player"))
+        var dist = Vector3.Distance(transform.position, player.position);
+
+        if(dist > awarenessRadius)
         {
             isTriggered = true;
         }
