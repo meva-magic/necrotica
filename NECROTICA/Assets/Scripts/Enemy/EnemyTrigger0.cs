@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTrigger : MonoBehaviour
+public class EnemyTrigger0 : MonoBehaviour
 {
+    [SerializeField] private Material agroMat;
     public bool isTriggered;
 
 
@@ -11,6 +12,7 @@ public class EnemyTrigger : MonoBehaviour
     {
         if(isTriggered)
         {
+            GetComponent<MeshRenderer>().material = agroMat;
         }
     }
 

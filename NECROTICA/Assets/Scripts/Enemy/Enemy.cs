@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        enemyHealth -= damage;
+        //enemyHealth -= damage;
         AudioManager.instance.Play("EnemyHit");
         Instantiate(swordHitEffect, transform.position, Quaternion.identity);
 
