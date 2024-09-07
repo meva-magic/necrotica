@@ -19,7 +19,7 @@ public class EnemyTrigger : MonoBehaviour
     {
         var dist = Vector3.Distance(transform.position, player.position);
 
-        if(dist > awarenessRadius)
+        if(dist < awarenessRadius)
         {
             isTriggered = true;
         }

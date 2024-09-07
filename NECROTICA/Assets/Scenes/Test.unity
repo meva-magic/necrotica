@@ -2577,7 +2577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38464d7fa0a62284194370a05fb4eff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  awarenessRadius: 0
+  awarenessRadius: 6
   isTriggered: 0
 --- !u!1 &8600519557664782035
 GameObject:
