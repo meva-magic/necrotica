@@ -8,6 +8,14 @@ public class UIManager : MonoBehaviour
 {
     public GameObject gameOver;
 
+    public static UIManager instance;
+
+    void Awake ()
+	{
+		instance = this;
+	}
+    
+
     private void LockCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -18,7 +26,9 @@ public class UIManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void EnableGameOver()
+
+
+    public void GameOver()
     {
         gameOver.SetActive(true);
     }
@@ -28,24 +38,25 @@ public class UIManager : MonoBehaviour
         //PlayerHealth.OnPlayerDeath += EnableGameOver;
     }
 
+
+
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+
+
     private void Start()
     {
         LockCursor();
-
-        //AudioManager.instance.Play("Level music");
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.R))
         {
-            //AudioManager.instance.Play("Button press");
-
+            AudioManager.instance.Play("Button press");
             RestartLevel();
         }
     }
