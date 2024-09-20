@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        if(enemyTrigger.isTriggered)
+        if(enemyTrigger.isTriggered && Vector2.Distance (transform.position, player.position) > 0.6)
         {
             enemyNavMesh.SetDestination(player.transform.position);
         }
