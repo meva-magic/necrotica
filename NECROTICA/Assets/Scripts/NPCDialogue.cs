@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class DialogueController : MonoBehaviour
@@ -10,7 +11,9 @@ public class DialogueController : MonoBehaviour
     private int index = 0;
     public float dialogueSpeed;
 
-    public Animator dialogueAnimator;
+    public GameObject dialogue;
+
+    //public Animator dialogueAnimator;
     private bool startDialogue = true;
 
     private void Start()
@@ -25,6 +28,7 @@ public class DialogueController : MonoBehaviour
             if(startDialogue)
             {
                 //dialogueAnimator.SetTrigger("Enter");
+                dialogue.SetActive(true);
                 startDialogue = false;
             }
 
@@ -46,8 +50,10 @@ public class DialogueController : MonoBehaviour
 
         else
         {
-            dialogueText.text = "";
-            dialogueAnimator.SetTrigger("Exit");
+            dialogue.SetActive(false);
+
+            //dialogueText.text = "";
+            //dialogueAnimator.SetTrigger("Exit");
             index = 0;
             startDialogue = true;
         }
