@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     private float enemyHealth = 2f;
     [SerializeField] GameObject swordHitEffect;
 
-    [SerializeField] EnemyManager enemyManager;
+    //private EnemyManager enemyManager;
 
 
     public void TakeDamage(float damage)
@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 
         if(enemyHealth <= 0)
         {
-            enemyManager.RemoveEnemy(this);
+            EnemyManager.instance.RemoveEnemy(this);
 
             AudioManager.instance.Play("EnemyDeath");
             Destroy(gameObject);
