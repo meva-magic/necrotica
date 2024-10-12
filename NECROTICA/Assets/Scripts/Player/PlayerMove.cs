@@ -8,13 +8,20 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float damping = 5f;
 
     private CharacterController controller;
-
     private Vector3 inputVector;
     private Vector3 movementVector;
-
-    [SerializeField] private Animator camAnim;
     private bool isMoving;
 
+    public bool isTalking;
+    public static PlayerMove instance;
+
+    [SerializeField] private Animator camAnim;
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -34,7 +41,7 @@ public class PlayerMove : MonoBehaviour
         if(Input.GetKey(KeyCode.W) ||
            Input.GetKey(KeyCode.A) ||
            Input.GetKey(KeyCode.S) ||
-           Input.GetKey(KeyCode.D))
+           Input.GetKey(KeyCode.D) && isTalking!)
         {
             isMoving = true;
 

@@ -5,15 +5,27 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     public GameObject Dialogue;
+    public bool isTriggered;
+
     private Shake shake;
+    private Transform player;
+    
+
+    [SerializeField] private float talkRadius = 3;
 
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Start()
     {
-        if(other.tag == "Player")
+        player = FindObjectOfType<PlayerMove>().transform;
+    }
+
+    private void Update()
+    {
+        var dist = Vector3.Distance(transform.position, player.position);
+
+        if(dist < talkRadius)
         {
-            //shake.CamShake();
-            //AudioManager.instance.Play("Sword pickup");
+            isTriggered = true;
             Dialogue.SetActive(true);
         }
     }

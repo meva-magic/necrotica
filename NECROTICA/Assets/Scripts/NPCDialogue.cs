@@ -30,6 +30,7 @@ public class DialogueController : MonoBehaviour
                 //dialogueAnimator.SetTrigger("Enter");
                 dialogue.SetActive(true);
                 startDialogue = false;
+                PlayerMove.instance.isTalking = true;
             }
 
             else
@@ -56,6 +57,7 @@ public class DialogueController : MonoBehaviour
             //dialogueAnimator.SetTrigger("Exit");
             index = 0;
             startDialogue = true;
+            PlayerMove.instance.isTalking = false;
         }
     }
 
