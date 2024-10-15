@@ -9,13 +9,16 @@ public class Mushroom : BuffItem
 
     protected override void ApplyBuff(PlayerMove playerMove, PlayerHealth playerHealth)
     {
+        int healthToLose = Mathf.CeilToInt(playerHealth.health * 0.25f);
+        playerHealth.TakeDamage(healthToLose);
+        Debug.Log("Health reduced by " + healthToLose + " due to Mushroom effect.");
+
         Sword sword = playerMove.GetComponentInChildren<Sword>();
 
         if (sword != null)
         {
             playerMove.StartCoroutine(ApplyDamageBuff(sword));
-
-            Destroy(gameObject);
+            Destroy(gameObject); 
         }
     }
 
