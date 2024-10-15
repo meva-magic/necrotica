@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] private float playerSpeed = 10f;
+    [SerializeField] public float playerSpeed = 10f;
     [SerializeField] private float damping = 5f;
 
     private CharacterController controller;
     private Vector3 inputVector;
     private Vector3 movementVector;
     private bool isMoving;
-
     public bool isTalking;
     public static PlayerMove instance;
 
@@ -41,7 +40,7 @@ public class PlayerMove : MonoBehaviour
         if(Input.GetKey(KeyCode.W) ||
            Input.GetKey(KeyCode.A) ||
            Input.GetKey(KeyCode.S) ||
-           Input.GetKey(KeyCode.D) && isTalking!)
+           Input.GetKey(KeyCode.D))
         {
             isMoving = true;
 

@@ -9,7 +9,7 @@ public class Sword : MonoBehaviour
 
     [SerializeField] private float range = 3f;
     [SerializeField] private float verticalRange = 3f;
-    [SerializeField] private float damage = 2f;
+    [SerializeField] public float damage = 2f;
     
     [SerializeField] private float hitRate;
     [SerializeField] private float hitRadius = 3f;

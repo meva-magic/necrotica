@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 10;
-    private int health;
+    [SerializeField] public int maxHealth = 10;
+    [SerializeField] private int health;
 
-    [SerializeField] private int maxArmor = 3;
-    private int armor;
+    [SerializeField] public int maxArmor = 10;
+    [SerializeField] private int armor;
 
     public bool playerIsDead;
 
     private void Start()
     {
-        health = maxHealth;
-        armor = maxArmor;
+        health = Mathf.CeilToInt(maxHealth * 0.5f);
+        armor = 0;
+
     }
 
     private void Update()
@@ -50,5 +51,14 @@ public class PlayerHealth : MonoBehaviour
             playerIsDead = true;
             UIManager.instance.GameOver();
         }
+    }
+    public void RestoreHealth(int amount)
+    {
+        health = Mathf.Min(health + amount, maxHealth);
+    }
+
+    public void RestoreArmor(int amount)
+    {
+        armor = Mathf.Min(armor + amount, maxArmor);
     }
 }
