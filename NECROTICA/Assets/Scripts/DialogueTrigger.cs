@@ -16,7 +16,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<PlayerMove>().transform;
+        player = FindFirstObjectByType<PlayerMove>().transform;
     }
 
     private void Update()

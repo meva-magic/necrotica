@@ -52,6 +52,8 @@ public class PlayerHealth : MonoBehaviour
             UIManager.instance.GameOver();
         }
     }
+
+    
     public void RestoreHealth(int amount)
     {
         health = Mathf.Min(health + amount, maxHealth);

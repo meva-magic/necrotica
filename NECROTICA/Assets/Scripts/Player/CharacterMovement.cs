@@ -19,11 +19,11 @@ public class CharacterMovement : MonoBehaviour
             float horizontalInput = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
-                body.velocity = new Vector2(0, verticalInput);
+                body.linearVelocity = new Vector2(0, verticalInput);
             else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-                body.velocity = new Vector2(horizontalInput, 0);
+                body.linearVelocity = new Vector2(horizontalInput, 0);
             else
-                body.velocity = new Vector2(0, 0);
+                body.linearVelocity = new Vector2(0, 0);
         }
     }
 

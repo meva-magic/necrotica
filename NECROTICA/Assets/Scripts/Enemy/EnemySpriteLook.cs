@@ -10,7 +10,7 @@ public class EnemySpriteLook : MonoBehaviour
 
     private void Start()
     {
-        target = FindObjectOfType<PlayerMove>().transform;
+        target = FindFirstObjectByType<PlayerMove>().transform;
     }
 
     private void Update()

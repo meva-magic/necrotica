@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         enemyTrigger = GetComponent<EnemyTrigger>();
-        player = FindObjectOfType<PlayerMove>().transform;
+        player = FindFirstObjectByType<PlayerMove>().transform;
         enemyNavMesh = GetComponent<NavMeshAgent>();
     }
 
