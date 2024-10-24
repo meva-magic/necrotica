@@ -1,3 +1,4 @@
+using System.Transactions;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
@@ -8,9 +9,12 @@ public class SpawnerRoom : MonoBehaviour
     private int rand;
     public bool spawned = false;
 
+    public float waitTime = 4;
+
 
     private void Start()
     {
+        Destroy(gameObject, waitTime);
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         Invoke("Spawn", 0.1f);
     }
@@ -44,11 +48,25 @@ public class SpawnerRoom : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter3D(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-            if (other.CompareTag("SpawnPoint") && other.GetComponent<SpawnerRoom>().spawned == true)
+        if (other.CompareTag("SpawnPoint"))
+        {
+            SpawnerRoom otherSpawner = other.GetComponent<SpawnerRoom>();
+            if (otherSpawner != null)
             {
-                Destroy(gameObject);
+                if (otherSpawner.spawned == false && spawned == false)
+                {
+                    Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
+                }
+                if (otherSpawner.spawned == true && !spawned)
+                {
+                    Destroy(gameObject);
+                }
             }
+        }
+        spawned = true;
     }
+
+
 }
