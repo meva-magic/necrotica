@@ -1,26 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] public int maxHealth = 10;
-    [SerializeField] public int health;
+    [SerializeField] public float maxHealth = 100f;
+    public float health;
 
-    [SerializeField] public int maxArmor = 10;
-    [SerializeField] private int armor;
+    [SerializeField] public float maxArmor = 100f;
+    [SerializeField] private float armor;
 
     public bool playerIsDead;
+    public static PlayerHealth instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
-        health = Mathf.CeilToInt(maxHealth * 0.5f);
+        health = maxHealth;
+        //health = Mathf.CeilToInt(maxHealth * 0.5f);
         armor = 0;
 
     }
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            TakeDamage(20);
+        }
     }
 
     public void TakeDamage(int damage)
@@ -34,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
 
             else if(armor < damage)
             {
-                int remainingDamage = damage - armor;
+                float remainingDamage = damage - armor;
                 armor = 0;
 
                 health -= remainingDamage;
@@ -52,7 +64,6 @@ public class PlayerHealth : MonoBehaviour
             UIManager.instance.GameOver();
         }
     }
-
     
     public void RestoreHealth(int amount)
     {
