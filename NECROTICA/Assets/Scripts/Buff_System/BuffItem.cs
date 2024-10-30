@@ -13,8 +13,14 @@ public abstract class BuffItem : MonoBehaviour
 
         if (playerMove != null && playerHealth != null)
         {
+            // Применяем бафф
             ApplyBuff(playerMove, playerHealth);
-            Destroy(gameObject);
         }
+    }
+
+    // Метод для уничтожения объекта после завершения эффекта
+    protected void DestroyBuffItem()
+    {
+        Destroy(gameObject);
     }
 }
