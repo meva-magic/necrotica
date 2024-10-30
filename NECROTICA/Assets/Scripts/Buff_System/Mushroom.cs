@@ -17,8 +17,7 @@ public class Mushroom : BuffItem
 
         if (sword != null)
         {
-            playerMove.StartCoroutine(ApplyDamageBuff(sword));
-            Destroy(gameObject); 
+            playerMove.StartCoroutine(ApplyDamageBuff(sword)); 
         }
     }
 
