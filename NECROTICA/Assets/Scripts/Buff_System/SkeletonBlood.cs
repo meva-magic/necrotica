@@ -10,8 +10,6 @@ public class SkeletonBlood : BuffItem
     protected override void ApplyBuff(PlayerMove playerMove, PlayerHealth playerHealth)
     {
         playerMove.StartCoroutine(ApplySpeedBuff(playerMove));
-
-        Destroy(gameObject);
     }
 
     private IEnumerator ApplySpeedBuff(PlayerMove playerMove)
