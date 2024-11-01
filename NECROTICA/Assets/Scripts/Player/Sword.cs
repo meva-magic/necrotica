@@ -29,6 +29,7 @@ public class Sword : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0) && Time.time > nextTimeToHit)
         {
+            AudioManager.instance.Play("SwordSwoosh");
             Hit();
         }
     }

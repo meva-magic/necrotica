@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] public float maxHealth = 100f;
+    public float maxHealth = 100f;
     public float health;
+
+    private float decreaseHealthAmount = 2;
 
     [SerializeField] public float maxArmor = 100f;
     [SerializeField] private float armor;
@@ -24,11 +26,18 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth;
         //health = Mathf.CeilToInt(maxHealth * 0.5f);
         armor = 0;
-
     }
 
     private void Update()
     {
+        if(health <= 0)
+        {
+            playerIsDead = true;
+            UIManager.instance.GameOver();
+            AudioManager.instance.Play("PlayerDeath");
+        }
+        
+        health -= decreaseHealthAmount * Time.deltaTime;
         if(Input.GetKeyDown(KeyCode.F))
         {
             TakeDamage(20);
@@ -37,6 +46,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        AudioManager.instance.Play("PlayerHit");
+
         if(armor > 0)
         {
             if(armor >= damage)
@@ -57,17 +68,12 @@ public class PlayerHealth : MonoBehaviour
         {
             health -= damage;
         }
-
-        if(health <= 0)
-        {
-            playerIsDead = true;
-            UIManager.instance.GameOver();
-        }
     }
     
     public void RestoreHealth(int amount)
     {
         health = Mathf.Min(health + amount, maxHealth);
+        //health = Mathf.Lerp(health, newhealth, 0.03f);
     }
 
     public void RestoreArmor(int amount)

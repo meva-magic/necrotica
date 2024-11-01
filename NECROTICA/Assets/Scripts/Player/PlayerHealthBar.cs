@@ -5,14 +5,20 @@ using UnityEngine.UI;
 public class PlayerHealthBar : MonoBehaviour
 {
     public Slider healthSlider;
-    public Slider healthSliderDelay;
-
+    public Slider damegeSliderDelay;
+    public Slider healSliderDelay;
     private float lerpSpeed = 0.03f;
+    public static PlayerHealthBar instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
         healthSlider.value = 1;
-        healthSliderDelay.value = 1;
+        damegeSliderDelay.value = 1;
     }
 
     private void Update()
@@ -22,9 +28,16 @@ public class PlayerHealthBar : MonoBehaviour
             healthSlider.value = PlayerHealth.instance.health / 100;
         }
 
-        if(healthSlider.value != healthSliderDelay.value)
+        if(healthSlider.value != damegeSliderDelay.value)
         {
-            healthSliderDelay.value = Mathf.Lerp(healthSliderDelay.value,  (PlayerHealth.instance.health / 100), lerpSpeed);
+            damegeSliderDelay.value = Mathf.Lerp(damegeSliderDelay.value,  (PlayerHealth.instance.health / 100), lerpSpeed);
         }
+    }
+
+    public void HealBarIncrease()
+    {
+        //healSliderDelay.value = (PlayerHealth.instance.health / 100) + 0.16f;
+        healSliderDelay.value = Mathf.Lerp(healSliderDelay.value,  (PlayerHealth.instance.health / 100) + 0.16f, lerpSpeed);
+        //healSliderDelay.value = 0;
     }
 }
