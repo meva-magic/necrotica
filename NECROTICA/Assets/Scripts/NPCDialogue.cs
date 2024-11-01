@@ -13,33 +13,28 @@ public class DialogueController : MonoBehaviour
 
     public GameObject dialogue;
 
-    //public Animator dialogueAnimator;
     private bool startDialogue = true;
+    private bool isWriting;
 
-    private void Start()
-    {
-
-    }
 
     private void Update()
+{
+    if (!isWriting && Input.GetKeyDown(KeyCode.Space))
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (startDialogue)
         {
-            if(startDialogue)
-            {
-                //dialogueAnimator.SetTrigger("Enter");
-                dialogue.SetActive(true);
-                startDialogue = false;
-                PlayerMove.instance.isTalking = true;
-            }
-
-            else
-            {
-                NextLine();
-            }
+            dialogue.SetActive(true);
+            startDialogue = false;
+            StartCoroutine(WriteLines());
         }
-
+        else
+        {
+            StopAllCoroutines();
+            isWriting = false;
+            NextLine();
+        }
     }
+}
 
     private void NextLine()
     {
@@ -51,25 +46,23 @@ public class DialogueController : MonoBehaviour
 
         else
         {
-            dialogue.SetActive(false);
-
-            //dialogueText.text = "";
-            //dialogueAnimator.SetTrigger("Exit");
             index = 0;
+            dialogue.SetActive(false);
             startDialogue = true;
-            PlayerMove.instance.isTalking = false;
         }
     }
 
     IEnumerator WriteLines()
     {
-        foreach(char Character in lines[index].ToCharArray())
+        isWriting = true;
+        foreach (char character in lines[index].ToCharArray())
         {
-            dialogueText.text += Character;
+            dialogueText.text += character;
             AudioManager.instance.Play("Voice");
             yield return new WaitForSeconds(dialogueSpeed);
         }
-
+        isWriting = false;
         index++;
+        yield return null;
     }
 }
