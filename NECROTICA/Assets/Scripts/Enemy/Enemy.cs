@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
         if(enemyHealth <= 0)
         {
             EnemyManager.instance.RemoveEnemy(this);
-            PlayerHealth.instance.RestoreHealth(20);
+            PlayerHealth.instance.RestoreHealth(10);
 
             AudioManager.instance.Play("EnemyDeath");
             Destroy(gameObject);
