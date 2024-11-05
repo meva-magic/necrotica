@@ -14,6 +14,7 @@ public abstract class BuffItem : MonoBehaviour
         if (playerMove != null && playerHealth != null)
         {
             ApplyBuff(playerMove, playerHealth);
+            AudioManager.instance.Play("BuffPickUp");
             Destroy(gameObject);
         }
     }

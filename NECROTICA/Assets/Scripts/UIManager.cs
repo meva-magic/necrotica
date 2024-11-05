@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public GameObject gameOver;
+    public GameObject sword;
 
     public static UIManager instance;
 
@@ -27,10 +28,17 @@ public class UIManager : MonoBehaviour
     }
 
 
+    public void GetSword()
+    {
+        sword.SetActive(true);
+    }
+
 
     public void GameOver()
     {
         gameOver.SetActive(true);
+        AudioManager.instance.Play("PlayerDeath");
+        AudioManager.instance.Stop("LevelMusic");
     }
 
     private void OnEnable()
