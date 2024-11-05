@@ -8,6 +8,7 @@ public class DialogueController : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
     public string[] lines;
+    public int numberOfLines = 0;
     private int index = 0;
     public float dialogueSpeed;
 

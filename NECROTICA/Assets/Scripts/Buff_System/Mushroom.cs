@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Mushroom : BuffItem
 {
+    [SerializeField] GameObject pickUpEffect;
     [SerializeField] private float damageIncrease = 5f;
     [SerializeField] private float buffDuration = 10f;
 
@@ -23,6 +24,7 @@ public class Mushroom : BuffItem
 
     private IEnumerator ApplyDamageBuff(Sword sword)
     {
+        Instantiate(pickUpEffect, transform.position, Quaternion.identity);
         sword.damage += damageIncrease;
         Debug.Log("Damage increased by " + damageIncrease + " for " + buffDuration + " seconds.");
 

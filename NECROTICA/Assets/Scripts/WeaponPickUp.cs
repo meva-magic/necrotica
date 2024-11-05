@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class WeaponPickUp : MonoBehaviour
 {
+    [SerializeField] GameObject pickUpEffect;
+
     public Sword swordScript;
     public Rigidbody rb;
     public BoxCollider coll;
@@ -12,6 +14,7 @@ public class WeaponPickUp : MonoBehaviour
     {
         swordScript.enabled = true;
         AudioManager.instance.Play("SwordSwoosh");
+        Instantiate(pickUpEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

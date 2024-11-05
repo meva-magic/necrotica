@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Flower : BuffItem
 {
+    [SerializeField] GameObject pickUpEffect;
     [SerializeField] private float healthRestorePercent = 0.16f;
     [SerializeField] private float armorRestorePercent = 0.25f;
     [SerializeField] private float armorBuffDuration = 5.0f;
@@ -21,6 +22,7 @@ public class Flower : BuffItem
 
     private IEnumerator ApplyArmorBuff(PlayerHealth playerHealth, int armorAmount)
     {
+        Instantiate(pickUpEffect, transform.position, Quaternion.identity);
         playerHealth.RestoreArmor(armorAmount);
         Debug.Log("Temporary armor applied: " + armorAmount);
 
