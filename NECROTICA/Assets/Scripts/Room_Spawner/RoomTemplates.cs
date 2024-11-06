@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,29 +9,63 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] rightRooms;
 
     public GameObject closedRoom;
-
+    public GameObject nextRoom;
     public List<GameObject> rooms;
 
     public float waitTime;
-    private bool lastRoom;
-    public GameObject boos;
+    public float bossRoomWaitTime;
+    private bool bossRoomSpawned;
+    public GameObject bossRoom;
 
-    void Update()
+    private void Update()
     {
-        if (waitTime <= 0 && lastRoom == false)
+        if (waitTime <= 0 && !bossRoomSpawned)
         {
-            for (int i = 0; i < rooms.Count; i++)
+            if (rooms.Count < 10)
             {
-                if (i == rooms.Count - 1)
+                ReplaceLastRoomWithNextRoom();
+            }
+            else
+            {
+                if (bossRoomWaitTime <= 0)
                 {
-                    Instantiate(boos, rooms[i].transform.position, Quaternion.identity);
-                    lastRoom = true;  // ”станавливаем, что последн€€ комната найдена и босс заспавнен
+                    SpawnBossRoom();
+                }
+                else
+                {
+                    bossRoomWaitTime -= Time.deltaTime;
                 }
             }
         }
-        else if (!lastRoom)
+        else if (!bossRoomSpawned)
         {
-            waitTime -= Time.deltaTime;  // ”меньшаем waitTime только если lastRoom еще не найден
+            waitTime -= Time.deltaTime;
+        }
+    }
+
+    private void ReplaceLastRoomWithNextRoom()
+    {
+        if (rooms.Count > 0)
+        {
+            GameObject currentLastRoom = rooms[rooms.Count - 1];
+            Vector3 lastRoomPosition = currentLastRoom.transform.position;
+            Quaternion lastRoomRotation = currentLastRoom.transform.rotation;
+
+            Destroy(currentLastRoom);
+            rooms.RemoveAt(rooms.Count - 1);
+
+            GameObject newRoom = Instantiate(nextRoom, lastRoomPosition, lastRoomRotation);
+            rooms.Add(newRoom);
+        }
+    }
+
+    private void SpawnBossRoom()
+    {
+        if (rooms.Count > 0)
+        {
+            GameObject lastRoom = Instantiate(bossRoom, rooms[rooms.Count - 1].transform.position, rooms[rooms.Count - 1].transform.rotation);
+            rooms.Add(lastRoom);
+            bossRoomSpawned = true; // ”станавливаем флаг дл€ предотвращени€ повторного создани€
         }
     }
 }

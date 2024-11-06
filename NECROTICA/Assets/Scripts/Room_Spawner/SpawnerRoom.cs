@@ -9,7 +9,7 @@ public class SpawnerRoom : MonoBehaviour
     private int rand;
     public bool spawned = false;
 
-    public float waitTime = 4;
+    public float waitTime = 10;
 
 
     private void Start()
@@ -24,24 +24,24 @@ public class SpawnerRoom : MonoBehaviour
         {
             if (openingDirection == 1)
             {
-                    rand = Random.Range(0, templates.frontRooms.Length);
+                rand = Random.Range(0, templates.frontRooms.Length);
                 Instantiate(templates.frontRooms[rand], transform.position, templates.frontRooms[rand].transform.rotation);
 
             }
             else if (openingDirection == 2)
             {
-                    rand = Random.Range(0, templates.rightRooms.Length);
+                rand = Random.Range(0, templates.rightRooms.Length);
                 Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
 
             }
             else if (openingDirection == 3)
             {
-                    rand = Random.Range(0, templates.backRooms.Length);
+                rand = Random.Range(0, templates.backRooms.Length);
                 Instantiate(templates.backRooms[rand], transform.position, templates.backRooms[rand].transform.rotation);
             }
             else if (openingDirection == 4)
             {
-                    rand = Random.Range(0, templates.leftRooms.Length);
+                rand = Random.Range(0, templates.leftRooms.Length);
                 Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
             }
             spawned = true;
@@ -67,6 +67,4 @@ public class SpawnerRoom : MonoBehaviour
         }
         spawned = true;
     }
-
-
 }
