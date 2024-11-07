@@ -17,11 +17,21 @@ public class RoomTemplates : MonoBehaviour
     private bool bossRoomSpawned;
     public GameObject bossRoom;
 
+    private float replaceRoomTimer = 0f; // Таймер задержки перед запуском Update
+    public float replaceRoomDuration = 2f; // Длительность таймера
+
     private void Update()
     {
+        // Если таймер задержки активен, уменьшаем его и не запускаем остальную логику Update
+        if (replaceRoomTimer > 0)
+        {
+            replaceRoomTimer -= Time.deltaTime;
+            return;
+        }
+
         if (waitTime <= 0 && !bossRoomSpawned)
         {
-            if (rooms.Count < 10)
+            if (rooms.Count < 14)
             {
                 ReplaceLastRoomWithNextRoom();
             }
@@ -57,6 +67,9 @@ public class RoomTemplates : MonoBehaviour
             GameObject newRoom = Instantiate(nextRoom, lastRoomPosition, lastRoomRotation);
             rooms.Add(newRoom);
         }
+
+        // Запускаем таймер задержки
+        replaceRoomTimer = replaceRoomDuration;
     }
 
     private void SpawnBossRoom()
