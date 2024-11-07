@@ -13,23 +13,25 @@ public class RoomTemplates : MonoBehaviour
     public List<GameObject> rooms;
 
     public float waitTime;
-    public float bossRoomWaitTime;
-    private bool bossRoomSpawned;
-    public GameObject bossRoom;
+    private float replaceRoomTimer = 0f;
+    public float replaceRoomDuration = 2f;
 
-    private float replaceRoomTimer = 0f; // Таймер задержки перед запуском Update
-    public float replaceRoomDuration = 2f; // Длительность таймера
+    private SpecialRoomSpawner specialRoomSpawner;
+
+    private void Start()
+    {
+        specialRoomSpawner = GetComponent<SpecialRoomSpawner>();
+    }
 
     private void Update()
     {
-        // Если таймер задержки активен, уменьшаем его и не запускаем остальную логику Update
         if (replaceRoomTimer > 0)
         {
             replaceRoomTimer -= Time.deltaTime;
             return;
         }
 
-        if (waitTime <= 0 && !bossRoomSpawned)
+        if (waitTime <= 0)
         {
             if (rooms.Count < 14)
             {
@@ -37,17 +39,10 @@ public class RoomTemplates : MonoBehaviour
             }
             else
             {
-                if (bossRoomWaitTime <= 0)
-                {
-                    SpawnBossRoom();
-                }
-                else
-                {
-                    bossRoomWaitTime -= Time.deltaTime;
-                }
+                specialRoomSpawner.SpawnSpecialRooms(rooms);
             }
         }
-        else if (!bossRoomSpawned)
+        else
         {
             waitTime -= Time.deltaTime;
         }
@@ -68,17 +63,6 @@ public class RoomTemplates : MonoBehaviour
             rooms.Add(newRoom);
         }
 
-        // Запускаем таймер задержки
         replaceRoomTimer = replaceRoomDuration;
-    }
-
-    private void SpawnBossRoom()
-    {
-        if (rooms.Count > 0)
-        {
-            GameObject lastRoom = Instantiate(bossRoom, rooms[rooms.Count - 1].transform.position, rooms[rooms.Count - 1].transform.rotation);
-            rooms.Add(lastRoom);
-            bossRoomSpawned = true; // Устанавливаем флаг для предотвращения повторного создания
-        }
     }
 }
