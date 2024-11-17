@@ -268,6 +268,7 @@ MonoBehaviour:
   rooms: []
   waitTime: 4
   replaceRoomDuration: 4
+  specialRoomSpawnTimer: 3
 --- !u!4 &686853205
 Transform:
   m_ObjectHideFlags: 0
@@ -296,7 +297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossRoom: {fileID: 8865770616031208692, guid: 902b05bbcf3b0c44eaa1dee15108e863, type: 3}
-  keykeeper: {fileID: 226741173427371461, guid: 96fa1e678446a4b45b0d9dee2d84b468, type: 3}
+  keykeeper: {fileID: 5438505785083917998, guid: 38473dbef8c86254fa632fac887ff698, type: 3}
+  spawnTimeout: 10
 --- !u!1001 &1367139230
 PrefabInstance:
   m_ObjectHideFlags: 0
