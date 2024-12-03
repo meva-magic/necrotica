@@ -8,6 +8,16 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] leftRooms;
     public GameObject[] rightRooms;
 
+    public GameObject[] bossFrontRooms;
+    public GameObject[] bossBackRooms;
+    public GameObject[] bossLeftRooms;
+    public GameObject[] bossRightRooms;
+
+    public GameObject[] keykeeperFrontRooms;
+    public GameObject[] keykeeperBackRooms;
+    public GameObject[] keykeeperLeftRooms;
+    public GameObject[] keykeeperRightRooms;
+
     public GameObject closedRoom;
     public GameObject nextRoom;
     public List<GameObject> rooms;
@@ -86,7 +96,8 @@ public class RoomTemplates : MonoBehaviour
             // Проверяем, истёк ли таймер
             if (specialRoomSpawnTimer <= 0)
             {
-                specialRoomSpawner.SpawnSpecialRooms(rooms);
+                // Передача RoomTemplates в SpecialRoomSpawner
+                specialRoomSpawner.SpawnSpecialRooms(rooms, this);
                 specialRoomsSpawned = true; // Устанавливаем флаг, чтобы больше не спаунить специальные комнаты
             }
         }

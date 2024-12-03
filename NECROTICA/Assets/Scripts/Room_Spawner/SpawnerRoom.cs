@@ -17,37 +17,71 @@ public class SpawnerRoom : MonoBehaviour
 
     void Spawn()
     {
-        // Проверяем, достигли ли мы лимита комнат
-        if (spawned == false && templates.rooms.Count < 15)
+        if (!spawned)
         {
-            if (openingDirection == 1)
+            if (templates.rooms.Count < 14)
             {
-                rand = Random.Range(0, templates.frontRooms.Length);
-                Instantiate(templates.frontRooms[rand], transform.position, templates.frontRooms[rand].transform.rotation);
+                // Обычный спаун
+                SpawnRegularRoom();
             }
-            else if (openingDirection == 2)
+            else if (templates.rooms.Count == 14)
             {
-                rand = Random.Range(0, templates.rightRooms.Length);
-                Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
+                // Спаун босс-комнаты
+                SpawnBossRoom();
             }
-            else if (openingDirection == 3)
-            {
-                rand = Random.Range(0, templates.backRooms.Length);
-                Instantiate(templates.backRooms[rand], transform.position, templates.backRooms[rand].transform.rotation);
-            }
-            else if (openingDirection == 4)
-            {
-                rand = Random.Range(0, templates.leftRooms.Length);
-                Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
-            }
-            spawned = true;
         }
-        else if (templates.rooms.Count >= 15)
+    }
+
+    void SpawnRegularRoom()
+    {
+        if (openingDirection == 1)
         {
-            // Если достигли лимита, создаем закрытую комнату вместо новой
-            Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
-            spawned = true;
+            rand = Random.Range(0, templates.frontRooms.Length);
+            Instantiate(templates.frontRooms[rand], transform.position, templates.frontRooms[rand].transform.rotation);
         }
+        else if (openingDirection == 2)
+        {
+            rand = Random.Range(0, templates.rightRooms.Length);
+            Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
+        }
+        else if (openingDirection == 3)
+        {
+            rand = Random.Range(0, templates.backRooms.Length);
+            Instantiate(templates.backRooms[rand], transform.position, templates.backRooms[rand].transform.rotation);
+        }
+        else if (openingDirection == 4)
+        {
+            rand = Random.Range(0, templates.leftRooms.Length);
+            Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
+        }
+
+        spawned = true;
+    }
+
+    void SpawnBossRoom()
+    {
+        if (openingDirection == 1)
+        {
+            rand = Random.Range(0, templates.bossFrontRooms.Length);
+            Instantiate(templates.bossFrontRooms[rand], transform.position, templates.bossFrontRooms[rand].transform.rotation);
+        }
+        else if (openingDirection == 2)
+        {
+            rand = Random.Range(0, templates.bossRightRooms.Length);
+            Instantiate(templates.bossRightRooms[rand], transform.position, templates.bossRightRooms[rand].transform.rotation);
+        }
+        else if (openingDirection == 3)
+        {
+            rand = Random.Range(0, templates.bossBackRooms.Length);
+            Instantiate(templates.bossBackRooms[rand], transform.position, templates.bossBackRooms[rand].transform.rotation);
+        }
+        else if (openingDirection == 4)
+        {
+            rand = Random.Range(0, templates.bossLeftRooms.Length);
+            Instantiate(templates.bossLeftRooms[rand], transform.position, templates.bossLeftRooms[rand].transform.rotation);
+        }
+
+        spawned = true;
     }
 
     void OnTriggerEnter(Collider other)
@@ -57,16 +91,17 @@ public class SpawnerRoom : MonoBehaviour
             SpawnerRoom otherSpawner = other.GetComponent<SpawnerRoom>();
             if (otherSpawner != null)
             {
-                if (otherSpawner.spawned == false && spawned == false)
+                if (!otherSpawner.spawned && !spawned)
                 {
                     Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
                 }
-                if (otherSpawner.spawned == true && !spawned)
+                if (otherSpawner.spawned && !spawned)
                 {
                     Destroy(gameObject);
                 }
             }
         }
+
         spawned = true;
     }
 }

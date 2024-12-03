@@ -263,6 +263,22 @@ MonoBehaviour:
   - {fileID: 2043588088698759608, guid: 1d04a2e9d09704d42837d0eae2cd4052, type: 3}
   - {fileID: 2653963683956213055, guid: 2e6b3cbaedf37b54aaa2c936d0a16c4f, type: 3}
   - {fileID: 2653963683956213055, guid: 2e6b3cbaedf37b54aaa2c936d0a16c4f, type: 3}
+  bossFrontRooms:
+  - {fileID: 5311607745734111677, guid: 0d38d0148ec41db4a97ce435667070f1, type: 3}
+  bossBackRooms:
+  - {fileID: 1001144511667546579, guid: df07645fa81f2fe4a9796197d150fe2d, type: 3}
+  bossLeftRooms:
+  - {fileID: 1838681874439794511, guid: 0e63f451b7dc3ca42a6292e7f2e8939a, type: 3}
+  bossRightRooms:
+  - {fileID: 5028388232907122635, guid: 64afbdefd6273f94e9082c5b24fafedb, type: 3}
+  keykeeperFrontRooms:
+  - {fileID: 847009250437848201, guid: 30edb2ab7d8d58546bec32cfc78478ea, type: 3}
+  keykeeperBackRooms:
+  - {fileID: 144698143483189655, guid: c67394e1e15881d468c2a54d70c124cf, type: 3}
+  keykeeperLeftRooms:
+  - {fileID: 3908205582988202683, guid: ecac2b9199c16b94694fe974d6afa0c0, type: 3}
+  keykeeperRightRooms:
+  - {fileID: 3908205582988202683, guid: ecac2b9199c16b94694fe974d6afa0c0, type: 3}
   closedRoom: {fileID: 9021739331026485219, guid: 9a349004962581d4fbf713f0bd669367, type: 3}
   nextRoom: {fileID: 681917766403532398, guid: 488610a4fb124e54e93352e71902ee73, type: 3}
   rooms: []
@@ -296,9 +312,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d246f7778d13cfc4ca91017f95b134db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossRoom: {fileID: 8865770616031208692, guid: 902b05bbcf3b0c44eaa1dee15108e863, type: 3}
   keykeeper: {fileID: 5438505785083917998, guid: 38473dbef8c86254fa632fac887ff698, type: 3}
-  spawnTimeout: 10
+  bossPrefab: {fileID: 243842804553187586, guid: 8cacb6cc7843c1640a3b1e6c94a8a093, type: 3}
+  spawnTimeout: 12
 --- !u!1001 &1367139230
 PrefabInstance:
   m_ObjectHideFlags: 0
