@@ -13,23 +13,18 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] bossLeftRooms;
     public GameObject[] bossRightRooms;
 
-    public GameObject[] keykeeperFrontRooms;
-    public GameObject[] keykeeperBackRooms;
-    public GameObject[] keykeeperLeftRooms;
-    public GameObject[] keykeeperRightRooms;
-
     public GameObject closedRoom;
     public GameObject nextRoom;
     public List<GameObject> rooms;
 
-    public float waitTime; // Ожидание перед началом генерации
-    private float replaceRoomTimer = 0f; // Таймер для замены комнат
-    public float replaceRoomDuration = 2f; // Длительность замены комнаты
+    public float waitTime;
+    private float replaceRoomTimer = 0f;
+    public float replaceRoomDuration = 2f;
 
     private SpecialRoomSpawner specialRoomSpawner;
 
-    public float specialRoomSpawnTimer = 8f; // Таймер для спауна специальных комнат
-    private bool specialRoomsSpawned = false; // Флаг, чтобы спаунить специальные комнаты только один раз
+    public float specialRoomSpawnTimer = 8f;
+    private bool specialRoomsSpawned = false;
 
     private void Start()
     {
@@ -38,14 +33,12 @@ public class RoomTemplates : MonoBehaviour
 
     private void Update()
     {
-        // Управление таймером замены комнат
         if (replaceRoomTimer > 0)
         {
             replaceRoomTimer -= Time.deltaTime;
             return;
         }
 
-        // Управление генерацией
         if (waitTime <= 0)
         {
             if (rooms.Count < 14)
@@ -63,7 +56,6 @@ public class RoomTemplates : MonoBehaviour
         }
     }
 
-    // Логика замены последней комнаты
     private void ReplaceLastRoomWithNextRoom()
     {
         if (rooms.Count > 0)
@@ -74,7 +66,7 @@ public class RoomTemplates : MonoBehaviour
                 Vector3 lastRoomPosition = currentLastRoom.transform.position;
                 Quaternion lastRoomRotation = currentLastRoom.transform.rotation;
 
-                rooms.RemoveAt(rooms.Count - 1); // Удаляем из списка, но не уничтожаем сразу
+                rooms.RemoveAt(rooms.Count - 1);
                 Destroy(currentLastRoom);
 
                 GameObject newRoom = Instantiate(nextRoom, lastRoomPosition, lastRoomRotation);
@@ -85,20 +77,16 @@ public class RoomTemplates : MonoBehaviour
         replaceRoomTimer = replaceRoomDuration;
     }
 
-    // Управление спауном специальных комнат
     private void HandleSpecialRoomSpawning()
     {
         if (!specialRoomsSpawned)
         {
-            // Уменьшаем таймер для специальных комнат
             specialRoomSpawnTimer -= Time.deltaTime;
 
-            // Проверяем, истёк ли таймер
             if (specialRoomSpawnTimer <= 0)
             {
-                // Передача RoomTemplates в SpecialRoomSpawner
-                specialRoomSpawner.SpawnSpecialRooms(rooms, this);
-                specialRoomsSpawned = true; // Устанавливаем флаг, чтобы больше не спаунить специальные комнаты
+                specialRoomSpawner.SpawnSpecialRooms(rooms);
+                specialRoomsSpawned = true;
             }
         }
     }

@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnerRoom : MonoBehaviour
@@ -21,12 +23,10 @@ public class SpawnerRoom : MonoBehaviour
         {
             if (templates.rooms.Count < 14)
             {
-                // Обычный спаун
                 SpawnRegularRoom();
             }
             else if (templates.rooms.Count == 14)
             {
-                // Спаун босс-комнаты
                 SpawnBossRoom();
             }
         }
