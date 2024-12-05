@@ -6,6 +6,7 @@ public class Sword : MonoBehaviour
 {
     private BoxCollider swordTrigger;
     public EnemyManager enemyManager;
+    [SerializeField] private Animator animator;
 
     [SerializeField] private float range = 3f;
     [SerializeField] private float verticalRange = 3f;
@@ -30,6 +31,15 @@ public class Sword : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && Time.time > nextTimeToHit)
         {
             AudioManager.instance.Play("SwordSwoosh");
+            if (animator != null)
+            {
+                animator.SetTrigger("Attaka");
+                Debug.Log("Attack animation triggered.");
+            }
+            else
+            {
+                Debug.LogError("Animator is null. Cannot trigger animation.");
+            }
             Hit();
         }
     }
