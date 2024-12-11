@@ -2,34 +2,74 @@ using UnityEngine;
 
 public class SwordPickUp : MonoBehaviour
 {
-    [SerializeField] GameObject pickUpEffect;
+    [SerializeField] private GameObject pickUpEffect; 
+    [SerializeField] private GameObject playerSwordObject; 
+    [SerializeField] private Transform player; 
+    [SerializeField] private float pickUpRange = 2.0f; 
 
-    public Sword swordScript;
-    public Rigidbody rb;
-    public BoxCollider coll;
-    public Transform player;
-    public float pickUpRange;
-
-    void PickUp()
-    {
-        swordScript.enabled = true;
-        AudioManager.instance.Play("SwordSwoosh");
-        Instantiate(pickUpEffect, transform.position, Quaternion.identity);
-        UIManager.instance.GetSword();
-        Destroy(gameObject);
-    }
+    private bool isPickedUp = false;
 
     private void Start()
     {
-        swordScript.enabled = false;
+        if (playerSwordObject != null)
+        {
+            playerSwordObject.SetActive(false);
+        }
     }
 
-    void Update()
+    private void Update()
     {
+        if (isPickedUp)
+            return;
+
+        if (player == null)
+        {
+            Debug.LogError("Player Transform не назначен!");
+            return;
+        }
+
         Vector3 distanceToPlayer = player.position - transform.position;
+
         if (distanceToPlayer.magnitude <= pickUpRange && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
         {
             PickUp();
         }
+    }
+
+    private void PickUp()
+    {
+        if (isPickedUp)
+            return;
+
+        isPickedUp = true;
+
+        if (playerSwordObject != null)
+        {
+            playerSwordObject.SetActive(true);
+
+            Sword swordScript = playerSwordObject.GetComponent<Sword>();
+            if (swordScript != null)
+            {
+                swordScript.enabled = true;
+            }
+            else
+            {
+                Debug.LogError("Sword script не найден на playerSwordObject.");
+            }
+        }
+
+        if (pickUpEffect != null)
+        {
+            Instantiate(pickUpEffect, transform.position, Quaternion.identity);
+        }
+
+        // Проигрываем звуковой эффект
+        AudioManager.instance.Play("SwordSwoosh");
+
+        // Обновляем UI
+        UIManager.instance.GetSword();
+
+        // Отключаем исходный объект меча
+        gameObject.SetActive(false);
     }
 }

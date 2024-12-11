@@ -30,6 +30,11 @@ public class UIManager : MonoBehaviour
 
     public void GetSword()
     {
+        if (sword == null)
+        {
+            Debug.LogError("sword не назначен в инспекторе для UIManager.");
+            return;
+        }
         sword.SetActive(true);
     }
 
