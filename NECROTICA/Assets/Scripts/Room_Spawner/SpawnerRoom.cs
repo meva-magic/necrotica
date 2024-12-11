@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnerRoom : MonoBehaviour
 {
     public int openingDirection;
-    private RoomTemplates templates;
+    private RoomTemplates templates; // Ссылка на RoomTemplates
     private int rand;
     public bool spawned = false;
     public float waitTime = 10;
@@ -27,6 +27,7 @@ public class SpawnerRoom : MonoBehaviour
             }
             else if (templates.rooms.Count == 14)
             {
+                // Если достигнута необходимая длина списка, спауним комнату босса
                 SpawnBossRoom();
             }
         }
@@ -60,6 +61,7 @@ public class SpawnerRoom : MonoBehaviour
 
     void SpawnBossRoom()
     {
+        // Спаун комнаты босса в зависимости от направления
         if (openingDirection == 1)
         {
             rand = Random.Range(0, templates.bossFrontRooms.Length);
@@ -84,24 +86,40 @@ public class SpawnerRoom : MonoBehaviour
         spawned = true;
     }
 
+    // Функция замены последней комнаты
+    void ReplaceLastRoomWithNextRoom(GameObject newRoomPrefab)
+    {
+        if (templates.rooms.Count > 0)
+        {
+            GameObject lastRoom = templates.rooms[templates.rooms.Count - 1];
+            if (lastRoom != null)
+            {
+                Vector3 lastRoomPosition = lastRoom.transform.position;
+                Quaternion lastRoomRotation = lastRoom.transform.rotation;
+
+                Destroy(lastRoom);
+                templates.rooms.RemoveAt(templates.rooms.Count - 1);
+
+                GameObject newRoom = Instantiate(newRoomPrefab, lastRoomPosition, lastRoomRotation);
+                templates.rooms.Add(newRoom);
+            }
+
+            templates.replaceRoomTimer = templates.replaceRoomDuration; // Обновление таймера для замены комнаты
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SpawnPoint"))
         {
             SpawnerRoom otherSpawner = other.GetComponent<SpawnerRoom>();
-            if (otherSpawner != null)
+            if (otherSpawner != null && !otherSpawner.spawned && !spawned)
             {
-                if (!otherSpawner.spawned && !spawned)
-                {
-                    Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
-                }
-                if (otherSpawner.spawned && !spawned)
-                {
-                    Destroy(gameObject);
-                }
+                Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
+                Destroy(gameObject);
             }
-        }
 
-        spawned = true;
+            spawned = true;
+        }
     }
 }

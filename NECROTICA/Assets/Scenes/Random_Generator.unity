@@ -171,9 +171,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 881980471064599977, guid: 260ab0ca617b18846b8fbfce4b8a819c, type: 3}
+      propertyPath: closedRoom
+      value: 
+      objectReference: {fileID: 5564760788179976711, guid: 63055f859722d554aab0c142507e9ed2, type: 3}
+    - target: {fileID: 881980471064599977, guid: 260ab0ca617b18846b8fbfce4b8a819c, type: 3}
+      propertyPath: specialRoomSpawnTimer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1795407447957246248, guid: 260ab0ca617b18846b8fbfce4b8a819c, type: 3}
       propertyPath: m_Name
       value: ScenecGen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2939703090659433015, guid: 260ab0ca617b18846b8fbfce4b8a819c, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4376987340965078083, guid: 260ab0ca617b18846b8fbfce4b8a819c, type: 3}
       propertyPath: m_LocalPosition.x

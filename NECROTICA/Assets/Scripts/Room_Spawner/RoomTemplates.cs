@@ -18,7 +18,7 @@ public class RoomTemplates : MonoBehaviour
     public List<GameObject> rooms;
 
     public float waitTime;
-    private float replaceRoomTimer = 0f;
+    public float replaceRoomTimer = 0f;
     public float replaceRoomDuration = 2f;
 
     private SpecialRoomSpawner specialRoomSpawner;
