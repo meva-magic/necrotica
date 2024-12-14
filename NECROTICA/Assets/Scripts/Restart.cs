@@ -3,7 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class Restart : MonoBehaviour
 {
-    public GameObject loadingScreen; // UI экран загрузки
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    /*public GameObject loadingScreen; // UI экран загрузки
     public float timer = 10f; // Таймер для активации проверки
     private bool isChecking = false; // Флаг, чтобы начать проверку после таймера
 
@@ -60,5 +68,5 @@ public class Restart : MonoBehaviour
     private void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    }*/
 }
