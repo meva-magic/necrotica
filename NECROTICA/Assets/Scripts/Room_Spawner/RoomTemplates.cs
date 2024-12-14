@@ -13,6 +13,11 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] bossLeftRooms;
     public GameObject[] bossRightRooms;
 
+    public GameObject[] keykeeperFrontRooms;
+    public GameObject[] keykeeperBackRooms;
+    public GameObject[] keykeeperLeftRooms;
+    public GameObject[] keykeeperRightRooms;
+
     public GameObject closedRoom;
     public GameObject nextRoom;
     public List<GameObject> rooms;

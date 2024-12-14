@@ -21,13 +21,16 @@ public class SpawnerRoom : MonoBehaviour
     {
         if (!spawned)
         {
-            if (templates.rooms.Count < 14)
+            if (templates.rooms.Count < 13) // До предпоследней комнаты
             {
                 SpawnRegularRoom();
             }
-            else if (templates.rooms.Count == 14)
+            else if (templates.rooms.Count == 13) // Предпоследняя комната
             {
-                // Если достигнута необходимая длина списка, спауним комнату босса
+                SpawnKeykeeperRoom();
+            }
+            else if (templates.rooms.Count == 14) // Последняя комната (босс)
+            {
                 SpawnBossRoom();
             }
         }
@@ -81,6 +84,32 @@ public class SpawnerRoom : MonoBehaviour
         {
             rand = Random.Range(0, templates.bossLeftRooms.Length);
             Instantiate(templates.bossLeftRooms[rand], transform.position, templates.bossLeftRooms[rand].transform.rotation);
+        }
+
+        spawned = true;
+    }
+
+    void SpawnKeykeeperRoom()
+    {
+        if (openingDirection == 1)
+        {
+            rand = Random.Range(0, templates.keykeeperFrontRooms.Length);
+            Instantiate(templates.keykeeperFrontRooms[rand], transform.position, templates.keykeeperFrontRooms[rand].transform.rotation);
+        }
+        else if (openingDirection == 2)
+        {
+            rand = Random.Range(0, templates.keykeeperRightRooms.Length);
+            Instantiate(templates.keykeeperRightRooms[rand], transform.position, templates.keykeeperRightRooms[rand].transform.rotation);
+        }
+        else if (openingDirection == 3)
+        {
+            rand = Random.Range(0, templates.keykeeperBackRooms.Length);
+            Instantiate(templates.keykeeperBackRooms[rand], transform.position, templates.keykeeperBackRooms[rand].transform.rotation);
+        }
+        else if (openingDirection == 4)
+        {
+            rand = Random.Range(0, templates.keykeeperLeftRooms.Length);
+            Instantiate(templates.keykeeperLeftRooms[rand], transform.position, templates.keykeeperLeftRooms[rand].transform.rotation);
         }
 
         spawned = true;

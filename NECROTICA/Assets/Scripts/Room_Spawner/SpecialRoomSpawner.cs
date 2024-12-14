@@ -22,7 +22,6 @@ public class SpecialRoomSpawner : MonoBehaviour
                 bossSpawned = true;
             }
         }
-
         StartCoroutine(CheckAndAssignBossRoom(rooms));
     }
 

@@ -266,6 +266,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8735366442770160034, guid: 5416b0e23b12fdf48be1a1acc60ded11, type: 3}
   m_PrefabInstance: {fileID: 881524134550617100}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &501466819 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 881980471064599977, guid: 260ab0ca617b18846b8fbfce4b8a819c, type: 3}
+  m_PrefabInstance: {fileID: 1581243492}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c6593e9732311142bdab0eb73695d0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &940351106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -472,6 +483,38 @@ PrefabInstance:
       propertyPath: rightRooms.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 881980471064599977, guid: 260ab0ca617b18846b8fbfce4b8a819c, type: 3}
+      propertyPath: keykeeperBackRooms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 881980471064599977, guid: 260ab0ca617b18846b8fbfce4b8a819c, type: 3}
+      propertyPath: keykeeperLeftRooms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 881980471064599977, guid: 260ab0ca617b18846b8fbfce4b8a819c, type: 3}
+      propertyPath: keykeeperFrontRooms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 881980471064599977, guid: 260ab0ca617b18846b8fbfce4b8a819c, type: 3}
+      propertyPath: keykeeperRightRooms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 881980471064599977, guid: 260ab0ca617b18846b8fbfce4b8a819c, type: 3}
+      propertyPath: 'keykeeperBackRooms.Array.data[0]'
+      value: 
+      objectReference: {fileID: 9213372131057225340, guid: 3f8cb5f1d7cb6bb4f913a9f14d4c1d22, type: 3}
+    - target: {fileID: 881980471064599977, guid: 260ab0ca617b18846b8fbfce4b8a819c, type: 3}
+      propertyPath: 'keykeeperLeftRooms.Array.data[0]'
+      value: 
+      objectReference: {fileID: 921252869627010246, guid: df906ae61b522bc4f92ecab922e43532, type: 3}
+    - target: {fileID: 881980471064599977, guid: 260ab0ca617b18846b8fbfce4b8a819c, type: 3}
+      propertyPath: 'keykeeperFrontRooms.Array.data[0]'
+      value: 
+      objectReference: {fileID: 9213372131057225340, guid: 3f8cb5f1d7cb6bb4f913a9f14d4c1d22, type: 3}
+    - target: {fileID: 881980471064599977, guid: 260ab0ca617b18846b8fbfce4b8a819c, type: 3}
+      propertyPath: 'keykeeperRightRooms.Array.data[0]'
+      value: 
+      objectReference: {fileID: 921252869627010246, guid: df906ae61b522bc4f92ecab922e43532, type: 3}
     - target: {fileID: 1795407447957246248, guid: 260ab0ca617b18846b8fbfce4b8a819c, type: 3}
       propertyPath: m_Name
       value: ScenecGen
@@ -618,6 +661,52 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3852653138488601898, guid: 1bf9decaf20bdbe469a2d56dedf11681, type: 3}
   m_PrefabInstance: {fileID: 1406042475}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1766144377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1766144379}
+  - component: {fileID: 1766144378}
+  m_Layer: 0
+  m_Name: Restar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1766144378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766144377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73552a2f5af8d6f4e9f3b576955849ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomTemplates: {fileID: 501466819}
+  loadingScreen: {fileID: 1760760386}
+--- !u!4 &1766144379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766144377}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 117.28569, y: -51.46218, z: -8.664605}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &881524134550617100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -694,3 +783,4 @@ SceneRoots:
   - {fileID: 216399659}
   - {fileID: 1581243492}
   - {fileID: 940351106}
+  - {fileID: 1766144379}

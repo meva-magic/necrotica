@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2934030549981229568}
   - component: {fileID: 7623282814010244817}
   m_Layer: 0
-  m_Name: Keykeeper
+  m_Name: keykeeper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5438505785083917998}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.296373, y: 2.395267, z: 12.910351}
+  m_LocalPosition: {x: 208.3711, y: 1.499939, z: -200.48688}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
