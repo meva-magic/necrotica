@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerItemInteraction : MonoBehaviour
 {
-    [SerializeField] private Animator animator;  // Аниматор игрока
+    [SerializeField] private Animator animator;
+    [SerializeField] private ParticleSystem particleEffect;
 
     private void Start()
     {
@@ -22,6 +23,7 @@ public class PlayerItemInteraction : MonoBehaviour
         if (other.CompareTag("Baff"))
         {
             PlayPickUpAnimation("Kury");
+            TriggerParticleEffect();
             Debug.Log("Attack animation triggered.");
         }
     }
@@ -32,6 +34,15 @@ public class PlayerItemInteraction : MonoBehaviour
         if (animator != null)
         {
             animator.SetTrigger(animationTrigger); // Применяем триггер для анимации
+        }
+    }
+
+    // Метод для активации Particle System
+    private void TriggerParticleEffect()
+    {
+        if (particleEffect != null)
+        {
+            particleEffect.Play(); // Запускаем эффект
         }
     }
 }
