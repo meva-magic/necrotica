@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1563205047372862809}
   m_Layer: 0
   m_Name: SkeletonBlood
-  m_TagString: Untagged
+  m_TagString: Baff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
