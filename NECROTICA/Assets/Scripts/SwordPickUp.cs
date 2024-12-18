@@ -52,10 +52,6 @@ public class SwordPickUp : MonoBehaviour
             {
                 swordScript.enabled = true;
             }
-            else
-            {
-                Debug.LogError("Sword script не найден на playerSwordObject.");
-            }
         }
 
         if (pickUpEffect != null)

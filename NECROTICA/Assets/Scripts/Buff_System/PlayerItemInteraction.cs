@@ -16,7 +16,7 @@ public class PlayerItemInteraction : MonoBehaviour
     {
         if (animator == null)
         {
-            Debug.LogError("Animator is null. Cannot trigger animation.");
+            //Debug.LogError("Animator is null. Cannot trigger animation.");
             return; // Остановить выполнение
         }
 
