@@ -6820,7 +6820,7 @@ PrefabInstance:
     - target: {fileID: 4289308526360316480, guid: 24c42da8638e50740bf03c7d45036801, type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2031168626}
     - target: {fileID: 4289308526360316480, guid: 24c42da8638e50740bf03c7d45036801, type: 3}
       propertyPath: enemyManager
       value: 
@@ -6837,6 +6837,10 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6477076251623394605, guid: 24c42da8638e50740bf03c7d45036801, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 4f1e262b1ed1d9c4d9579dfd54b03488, type: 3}
     - target: {fileID: 6477076251623394605, guid: 24c42da8638e50740bf03c7d45036801, type: 3}
       propertyPath: m_Controller
       value: 
