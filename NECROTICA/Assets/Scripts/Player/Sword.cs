@@ -11,7 +11,7 @@ public class Sword : MonoBehaviour
     [SerializeField] private float range = 3f;
     [SerializeField] private float verticalRange = 3f;
     [SerializeField] public float damage = 2f;
-    
+
     [SerializeField] private float hitRate;
     [SerializeField] private float hitRadius = 3f;
     [SerializeField] private float nextTimeToHit;
@@ -28,9 +28,8 @@ public class Sword : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0) && Time.time > nextTimeToHit)
+        if (Input.GetMouseButtonDown(0) && Time.time > nextTimeToHit)
         {
-            AudioManager.instance.Play("SwordSwoosh");
             if (animator != null)
             {
                 animator.SetTrigger("Attaka");
@@ -40,33 +39,30 @@ public class Sword : MonoBehaviour
             {
                 Debug.LogError("Animator is null. Cannot trigger animation.");
             }
+
+            AudioManager.instance.Play("SwordSwoosh");
             Hit();
         }
     }
 
     private void Hit()
     {
-        Collider[] enemyColliders;
-        enemyColliders = Physics.OverlapSphere(transform.position, hitRadius, enemyLayerMask);
+        // Создаем копию списка для перебора
+        List<Enemy> enemiesToProcess = new List<Enemy>(enemyManager.enemiesInTrigger);
 
-        foreach(var enemyCollider in enemyColliders)
+        foreach (var enemy in enemiesToProcess)
         {
-            enemyCollider.GetComponent<EnemyTrigger>().isTriggered = true;
-        }
-        
-        foreach (var enemy in enemyManager.enemiesInTrigger)
-        {
+            if (enemy == null) continue; // Проверяем, существует ли объект, чтобы избежать ошибок
+
             var dir = enemy.transform.position - transform.position;
-
             RaycastHit hit;
 
-            if(Physics.Raycast(transform.position, dir, out hit, range * 1.5f, raycastLayerMask))
+            if (Physics.Raycast(transform.position, dir, out hit, range * 1.5f, raycastLayerMask))
             {
-                if(hit.transform == enemy.transform)
+                if (hit.transform == enemy.transform)
                 {
                     enemy.TakeDamage(damage);
                 }
-
                 else
                 {
                     AudioManager.instance.Play("SwordSwoosh");
@@ -81,7 +77,7 @@ public class Sword : MonoBehaviour
     {
         Enemy enemy = other.transform.GetComponent<Enemy>();
 
-        if(enemy)
+        if (enemy)
         {
             enemyManager.AddEnemy(enemy);
         }
@@ -91,7 +87,7 @@ public class Sword : MonoBehaviour
     {
         Enemy enemy = other.transform.GetComponent<Enemy>();
 
-        if(enemy)
+        if (enemy)
         {
             enemyManager.RemoveEnemy(enemy);
         }

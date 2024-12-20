@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RedKeyPickup : MonoBehaviour
 {
-    public float activationDistance = 2f; // Дистанция активации
+    public float activationDistance = 2f;
     private GameObject player;
     private PickupManager pickupManager;
 
