@@ -19,6 +19,8 @@ public class Sword : MonoBehaviour
     [SerializeField] private LayerMask raycastLayerMask;
     [SerializeField] private LayerMask enemyLayerMask;
 
+    private bool canAttack = true;
+
     private void Start()
     {
         swordTrigger = GetComponent<BoxCollider>();
@@ -32,27 +34,35 @@ public class Sword : MonoBehaviour
         {
             if (animator != null)
             {
+                canAttack = false;
                 animator.SetTrigger("Attaka");
                 Debug.Log("Attack animation triggered.");
+                AudioManager.instance.Play("SwordSwoosh");
+                //Hit();
             }
             else
             {
                 Debug.LogError("Animator is null. Cannot trigger animation.");
             }
 
-            AudioManager.instance.Play("SwordSwoosh");
-            Hit();
         }
+
+    }
+    // Метод вызывается из события анимации
+    public void EnableAttack()
+    {
+        Hit(); // Наносим урон
+        nextTimeToHit = Time.time + hitRate; // Устанавливаем кулдаун
+        StartCoroutine(ResetAttackCooldown());
     }
 
-    private void Hit()
+    public void Hit()
     {
-        // Создаем копию списка для перебора
         List<Enemy> enemiesToProcess = new List<Enemy>(enemyManager.enemiesInTrigger);
 
         foreach (var enemy in enemiesToProcess)
         {
-            if (enemy == null) continue; // Проверяем, существует ли объект, чтобы избежать ошибок
+            if (enemy == null) continue;
 
             var dir = enemy.transform.position - transform.position;
             RaycastHit hit;
@@ -71,6 +81,12 @@ public class Sword : MonoBehaviour
         }
 
         nextTimeToHit = Time.time + hitRate;
+    }
+
+    private IEnumerator ResetAttackCooldown()
+    {
+        yield return new WaitForSeconds(hitRate);
+        canAttack = true; // Разрешаем следующую атаку
     }
 
     private void OnTriggerEnter(Collider other)
