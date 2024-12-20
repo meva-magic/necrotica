@@ -3247,6 +3247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1247862725}
+  - component: {fileID: 1247862726}
   m_Layer: 0
   m_Name: SpawnPoints
   m_TagString: Untagged
@@ -3263,15 +3264,72 @@ Transform:
   m_GameObject: {fileID: 1247862724}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.070961, y: -30.63167, z: -54.838017}
+  m_LocalPosition: {x: 5.8196144, y: -15.205345, z: -56.133396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 978849462}
   - {fileID: 1441941689}
   - {fileID: 1751557636}
-  m_Father: {fileID: 1374727671}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1247862726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247862724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64981b0be91df584fb433f3c9ce3ed7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Eye:
+  - {fileID: 7615270110031307266, guid: 22eabe5f7ec80c442a0732d7be094149, type: 3}
+  Slime:
+  - {fileID: 7615270110031307266, guid: 22eabe5f7ec80c442a0732d7be094149, type: 3}
+  SmallSlime:
+  - {fileID: 7615270110031307266, guid: 22eabe5f7ec80c442a0732d7be094149, type: 3}
+  Flower:
+  - {fileID: 5401376583496174947, guid: aa6ca1959a8be9046a776688437c7180, type: 3}
+  Mushroom:
+  - {fileID: 226741173427371461, guid: 96fa1e678446a4b45b0d9dee2d84b468, type: 3}
+  EyeSpawnPoints:
+  - {fileID: 229196898}
+  - {fileID: 1729435151}
+  - {fileID: 499293862}
+  - {fileID: 464821575}
+  - {fileID: 1532375062}
+  SlimeSpawnPoints:
+  - {fileID: 1728660164}
+  - {fileID: 1561113595}
+  - {fileID: 1311269026}
+  - {fileID: 1147116743}
+  - {fileID: 860962254}
+  - {fileID: 1948050788}
+  SmallSlimeSpawnPoints:
+  - {fileID: 1005990262}
+  - {fileID: 1194440566}
+  - {fileID: 1778646957}
+  - {fileID: 1378358641}
+  - {fileID: 1602771785}
+  FlowerSpawnPoints:
+  - {fileID: 1759804998}
+  - {fileID: 1882433908}
+  - {fileID: 1263297444}
+  - {fileID: 2103974002}
+  - {fileID: 1241134775}
+  - {fileID: 1417537327}
+  - {fileID: 669138442}
+  - {fileID: 2053753338}
+  - {fileID: 974447047}
+  - {fileID: 1281876331}
+  MushroomSpawnPoints:
+  - {fileID: 481511542}
+  - {fileID: 1531149358}
+  - {fileID: 270417470}
+  - {fileID: 2097903839}
 --- !u!1 &1263297443
 GameObject:
   m_ObjectHideFlags: 0
@@ -3612,7 +3670,6 @@ Transform:
   - {fileID: 216399659}
   - {fileID: 226236024}
   - {fileID: 2032830881}
-  - {fileID: 1247862725}
   - {fileID: 1731912845}
   - {fileID: 318854836}
   - {fileID: 352440131}
@@ -6599,3 +6656,4 @@ SceneRoots:
   - {fileID: 3972961945164377544}
   - {fileID: 1406042475}
   - {fileID: 1374727671}
+  - {fileID: 1247862725}
