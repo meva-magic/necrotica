@@ -3152,6 +3152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1230876443}
+  - component: {fileID: 1230876444}
   m_Layer: 0
   m_Name: RedKeyPickUp
   m_TagString: Untagged
@@ -3174,6 +3175,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1785324552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1230876444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230876442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed2794e198fb9540a4697bb86415516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationDistance: 3
 --- !u!1 &1240947013
 GameObject:
   m_ObjectHideFlags: 0
@@ -5353,6 +5367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1785324552}
+  - component: {fileID: 1785324553}
   m_Layer: 0
   m_Name: PickUps
   m_TagString: Untagged
@@ -5378,6 +5393,20 @@ Transform:
   - {fileID: 1230876443}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1785324553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785324551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33f29388ed16ec4ebb0966e60d1f502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yellowKeyPickedUp: 0
+  redKeyPickedUp: 0
 --- !u!4 &1791286036 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4181639663036989119, guid: b808f690df1a3a846869a9d672269a09, type: 3}
@@ -6001,8 +6030,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1969257661}
+  - component: {fileID: 1969257662}
   m_Layer: 0
-  m_Name: YellowKepPickUp
+  m_Name: YellowKeyPickUp
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6023,6 +6053,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1785324552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1969257662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969257660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be52dc30ef05cd6479dff96d9f7fad0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationDistance: 3
 --- !u!1001 &2018536609
 PrefabInstance:
   m_ObjectHideFlags: 0
