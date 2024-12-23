@@ -30,30 +30,21 @@ public class Sword : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && Time.time > nextTimeToHit)
+        if (Input.GetMouseButtonDown(0) && canAttack && Time.time > nextTimeToHit)
         {
+            
             if (animator != null)
             {
-                canAttack = false;
+                canAttack = false; 
                 animator.SetTrigger("Attaka");
                 Debug.Log("Attack animation triggered.");
                 AudioManager.instance.Play("SwordSwoosh");
-                //Hit();
             }
             else
             {
                 Debug.LogError("Animator is null. Cannot trigger animation.");
             }
-
         }
-
-    }
-    // Метод вызывается из события анимации
-    public void EnableAttack()
-    {
-        Hit(); // Наносим урон
-        nextTimeToHit = Time.time + hitRate; // Устанавливаем кулдаун
-        StartCoroutine(ResetAttackCooldown());
     }
 
     public void Hit()
@@ -81,13 +72,9 @@ public class Sword : MonoBehaviour
         }
 
         nextTimeToHit = Time.time + hitRate;
+        canAttack = true;
     }
 
-    private IEnumerator ResetAttackCooldown()
-    {
-        yield return new WaitForSeconds(hitRate);
-        canAttack = true; // Разрешаем следующую атаку
-    }
 
     private void OnTriggerEnter(Collider other)
     {
