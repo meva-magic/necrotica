@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class BossRoomDoor : MonoBehaviour
 {
+    public GameObject Dialogue;
+
     [SerializeField] private float lowerDistance = 3f;
     [SerializeField] private float lowerSpeed = 2f; 
     [SerializeField] private float activationDistance = 2f; 
@@ -22,12 +24,12 @@ public class BossRoomDoor : MonoBehaviour
 
         if (pickupManager == null)
         {
-            Debug.LogError("PickupManager не найден в сцене!");
+            Debug.LogError("PickupManager пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ!");
         }
 
         if (doorCollider == null)
         {
-            Debug.LogError("Коллайдер двери не найден!");
+            Debug.LogError("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ!");
         }
     }
 
@@ -50,7 +52,7 @@ public class BossRoomDoor : MonoBehaviour
             }
             else
             {
-                Debug.Log("Требуется Red Key, чтобы открыть эту дверь!");
+                Dialogue.SetActive(true);
             }
         }
 

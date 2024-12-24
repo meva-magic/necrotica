@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SwordPickUp : MonoBehaviour
 {
+    public GameObject Dialogue;
     [SerializeField] private GameObject pickUpEffect; 
     [SerializeField] private GameObject playerSwordObject; 
     [SerializeField] private Transform player; 
@@ -24,7 +25,7 @@ public class SwordPickUp : MonoBehaviour
 
         if (player == null)
         {
-            Debug.LogError("Player Transform не назначен!");
+            Debug.LogError("Player Transform пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
             return;
         }
 
@@ -59,13 +60,9 @@ public class SwordPickUp : MonoBehaviour
             Instantiate(pickUpEffect, transform.position, Quaternion.identity);
         }
 
-        // Проигрываем звуковой эффект
         AudioManager.instance.Play("SwordSwoosh");
-
-        // Обновляем UI
         UIManager.instance.GetSword();
-
-        // Отключаем исходный объект меча
         gameObject.SetActive(false);
+        Dialogue.SetActive(true);
     }
 }

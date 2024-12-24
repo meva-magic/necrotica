@@ -12,6 +12,7 @@ TagManager:
   - Baff
   - YellowKey
   - RedKey
+  - CenterPoint
   layers:
   - Default
   - TransparentFX

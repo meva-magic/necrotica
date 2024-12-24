@@ -7,7 +7,6 @@ public class DialogueTrigger : MonoBehaviour
     public GameObject Dialogue;
     public bool isTriggered;
 
-    private Shake shake;
     private Transform player;
     
 

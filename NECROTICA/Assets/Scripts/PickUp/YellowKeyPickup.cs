@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class YellowKeyPickup : MonoBehaviour
 {
-    public float activationDistance = 2f; // Дистанция активации
+    public GameObject Dialogue;
+    public float activationDistance = 2f; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private GameObject player;
     private PickupManager pickupManager;
 
@@ -13,7 +14,7 @@ public class YellowKeyPickup : MonoBehaviour
 
         if (pickupManager == null)
         {
-            Debug.LogError("PickupManager не найден в сцене!");
+            Debug.LogError("PickupManager пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ!");
         }
     }
 
@@ -31,8 +32,9 @@ public class YellowKeyPickup : MonoBehaviour
 
     void ActivatePickup()
     {
-        Debug.Log("YellowKey поднят!");
+        Debug.Log("YellowKey пїЅпїЅпїЅпїЅпїЅпїЅ!");
         pickupManager.yellowKeyPickedUp = true;
-        Destroy(gameObject); // Удаляем объект после активации
+        Dialogue.SetActive(true);
+        Destroy(gameObject);
     }
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RedKeyPickup : MonoBehaviour
 {
+    public GameObject Dialogue;
     public float activationDistance = 2f;
     private GameObject player;
     private PickupManager pickupManager;
@@ -13,7 +14,7 @@ public class RedKeyPickup : MonoBehaviour
 
         if (pickupManager == null)
         {
-            Debug.LogError("PickupManager не найден в сцене!");
+            Debug.LogError("PickupManager пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ!");
         }
     }
 
@@ -31,8 +32,9 @@ public class RedKeyPickup : MonoBehaviour
 
     void ActivatePickup()
     {
-        Debug.Log("RedKey поднят!");
+        Debug.Log("RedKey пїЅпїЅпїЅпїЅпїЅпїЅ!");
         pickupManager.redKeyPickedUp = true;
-        Destroy(gameObject); // Удаляем объект после активации
+        Dialogue.SetActive(true);
+        Destroy(gameObject);
     }
 }

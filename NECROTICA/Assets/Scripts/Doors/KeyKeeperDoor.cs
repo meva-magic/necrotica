@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class KeyKeeperDoor : MonoBehaviour
 {
+    public GameObject Dialogue;
+
     [SerializeField] private float lowerDistance = 3f;
     [SerializeField] private float lowerSpeed = 2f;
     [SerializeField] private float activationDistance = 2f;
@@ -22,12 +24,10 @@ public class KeyKeeperDoor : MonoBehaviour
 
         if (pickupManager == null)
         {
-            Debug.LogError("PickupManager не найден в сцене!");
         }
 
         if (doorCollider == null)
         {
-            Debug.LogError("Коллайдер двери не найден!");
         }
     }
 
@@ -50,7 +50,7 @@ public class KeyKeeperDoor : MonoBehaviour
             }
             else
             {
-                Debug.Log("Требуется Yellow Key, чтобы открыть эту дверь!");
+                Dialogue.SetActive(true);
             }
         }
 
