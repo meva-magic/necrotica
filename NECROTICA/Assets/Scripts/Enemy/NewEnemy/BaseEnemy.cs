@@ -1,39 +1,17 @@
-/*using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 
 public abstract class BaseEnemy : MonoBehaviour
 {
-    [Header("Enemy Settings")]
-    public float health = 10f; // Базовое здоровье
-    public float damage = 10f; // Урон
-    [SerializeField] private GameObject hitEffect;
+    [Header("Base Stats")]
+    public float health = 10f;         // Здоровье
+    public float damage = 5f;          // Урон
+    public float attackRange = 2f;     // Радиус атаки
+    public float attackCooldown = 3f; // Кулдаун атаки
 
-    protected Transform player;
-    protected NavMeshAgent agent;
-
-    private void Start()
+    public virtual void TakeDamage(float damageAmount)
     {
-        player = FindObjectOfType<PlayerHealth>().transform;
-        agent = GetComponent<NavMeshAgent>();
-        Initialize();
-    }
-
-    // Инициализация в дочерних классах
-    protected abstract void Initialize();
-
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
-
-        // Проигрываем звук попадания
-        AudioManager.instance.Play("EnemyHit");
-
-        // Создаем визуальный эффект попадания
-        if (hitEffect != null)
-        {
-            Instantiate(hitEffect, transform.position, Quaternion.identity);
-        }
+        health -= damageAmount;
+        Debug.Log($"{gameObject.name} получил урон, осталось {health} HP.");
 
         if (health <= 0)
         {
@@ -41,18 +19,11 @@ public abstract class BaseEnemy : MonoBehaviour
         }
     }
 
-    protected virtual void Die()
+    public virtual void Attack()
     {
-        // Удаляем противника из менеджера
-        EnemyManager.instance.RemoveEnemy(this);
-
-        // Восстанавливаем здоровье игроку
-        PlayerHealth.instance.RestoreHealth(10);
-
-        // Проигрываем звук смерти
-        AudioManager.instance.Play("EnemyDeath");
-
-        // Уничтожаем объект
-        Destroy(gameObject);
+        Debug.Log($"{gameObject.name} атакует игрока и наносит {damage} урона!");
+        PlayerHealth.instance.TakeDamage((int)damage);
     }
-}*/
+
+    protected abstract void Die(); // Логика смерти для уникальных врагов
+}

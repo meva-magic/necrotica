@@ -32,10 +32,9 @@ public class Sword : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && canAttack && Time.time > nextTimeToHit)
         {
-            
             if (animator != null)
             {
-                canAttack = false; 
+                canAttack = false;
                 animator.SetTrigger("Attaka");
                 Debug.Log("Attack animation triggered.");
                 AudioManager.instance.Play("SwordSwoosh");
@@ -49,12 +48,11 @@ public class Sword : MonoBehaviour
 
     public void Hit()
     {
-        List<Enemy> enemiesToProcess = new List<Enemy>(enemyManager.enemiesInTrigger);
+        List<BaseEnemy> enemiesToProcess = new List<BaseEnemy>(enemyManager.enemiesInTrigger);
 
         foreach (var enemy in enemiesToProcess)
         {
             if (enemy == null) continue;
-
             var dir = enemy.transform.position - transform.position;
             RaycastHit hit;
 
@@ -75,10 +73,9 @@ public class Sword : MonoBehaviour
         canAttack = true;
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
-        Enemy enemy = other.transform.GetComponent<Enemy>();
+        BaseEnemy enemy = other.transform.GetComponent<BaseEnemy>();
 
         if (enemy)
         {
@@ -88,7 +85,7 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Enemy enemy = other.transform.GetComponent<Enemy>();
+        BaseEnemy enemy = other.transform.GetComponent<BaseEnemy>();
 
         if (enemy)
         {

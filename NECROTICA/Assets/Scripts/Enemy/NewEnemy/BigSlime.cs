@@ -1,32 +1,42 @@
-/*using UnityEngine;
+using UnityEngine;
+using UnityEngine.AI;
 
 public class BigSlime : BaseEnemy
 {
     [SerializeField] private GameObject smallSlimePrefab;
+    [SerializeField] private GameObject deathEffect;
+    [SerializeField] private float spawnOffset = 1.5f;   
 
-    protected override void Initialize()
+    private EnemyAI enemyAI;                              
+
+    private void Awake()
     {
-        health = 50f;
+        // Установка уникальных параметров для BigSlime
+        health = 4f;
         damage = 10f;
-    }
+        attackRange = 4f;
 
-    private void Update()
-    {
-        if (player != null)
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        if (agent != null)
         {
-            agent.SetDestination(player.position);
+            agent.speed = 2f; // Уникальная скорость SmallSlime
         }
     }
 
     protected override void Die()
     {
-        base.Die();
-
-        // Спавним маленьких слизней
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        // Спавним двух маленьких слизней после смерти
         if (smallSlimePrefab != null)
         {
-            Instantiate(smallSlimePrefab, transform.position + Vector3.left, Quaternion.identity);
-            Instantiate(smallSlimePrefab, transform.position + Vector3.right, Quaternion.identity);
+            Vector3 spawnPosition1 = transform.position + new Vector3(-spawnOffset, 0f, 0f);
+            Vector3 spawnPosition2 = transform.position + new Vector3(spawnOffset, 0f, 0f);
+
+            Instantiate(smallSlimePrefab, spawnPosition1, Quaternion.identity);
+            Instantiate(smallSlimePrefab, spawnPosition2, Quaternion.identity);
         }
+
+        // Уничтожаем BigSlime
+        Destroy(gameObject);
     }
-}*/
+}

@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyTrigger : MonoBehaviour
 {
     private Transform player;
-    [SerializeField] private float awarenessRadius = 7;
+    [SerializeField] private float awarenessRadius = 7f;
 
     public bool isTriggered;
-
 
     private void Start()
     {
@@ -18,10 +15,6 @@ public class EnemyTrigger : MonoBehaviour
     private void Update()
     {
         var dist = Vector3.Distance(transform.position, player.position);
-
-        if(dist < awarenessRadius)
-        {
-            isTriggered = true;
-        }
+        isTriggered = dist < awarenessRadius;
     }
 }

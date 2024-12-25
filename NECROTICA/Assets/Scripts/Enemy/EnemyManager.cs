@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public List<Enemy> enemiesInTrigger = new List<Enemy>();
-    
+    public List<BaseEnemy> enemiesInTrigger = new List<BaseEnemy>();
+
     public static EnemyManager instance;
 
     private void Awake()
@@ -13,13 +12,19 @@ public class EnemyManager : MonoBehaviour
         instance = this;
     }
 
-    public void AddEnemy(Enemy enemy)
+    public void AddEnemy(BaseEnemy enemy)
     {
-        enemiesInTrigger.Add(enemy);
+        if (!enemiesInTrigger.Contains(enemy))
+        {
+            enemiesInTrigger.Add(enemy);
+        }
     }
 
-    public void RemoveEnemy(Enemy enemy)
+    public void RemoveEnemy(BaseEnemy enemy)
     {
-        enemiesInTrigger.Remove(enemy);
+        if (enemiesInTrigger.Contains(enemy))
+        {
+            enemiesInTrigger.Remove(enemy);
+        }
     }
 }

@@ -1,18 +1,30 @@
-/*using UnityEngine;
+using UnityEngine;
+using UnityEngine.AI;
 
 public class SmallSlime : BaseEnemy
 {
-    protected override void Initialize()
-    {
-        health = 20f;
-        damage = 5f;
-    }
+    [SerializeField] private GameObject deathEffect;
 
-    private void Update()
+    private void Awake()
     {
-        if (player != null)
+        // Устанавливаем уникальные параметры
+        health = 4f;
+        damage = 5f;
+        attackRange = 4f;
+        attackCooldown = 2f;
+
+        // Устанавливаем скорость перемещения
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        if (agent != null)
         {
-            agent.SetDestination(player.position);
+            agent.speed = 3f; // Уникальная скорость SmallSlime
         }
     }
-}*/
+
+    protected override void Die()
+    {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Debug.Log("SmallSlime уничтожен.");
+        Destroy(gameObject);
+    }
+}
