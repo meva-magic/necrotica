@@ -15,6 +15,7 @@ public abstract class BuffItem : MonoBehaviour
         {
             ApplyBuff(playerMove, playerHealth);
             AudioManager.instance.Play("BuffPickUp");
+            Effect.instance.ScreenShake();
             Destroy(gameObject);
         }
     }

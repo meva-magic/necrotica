@@ -32,7 +32,7 @@ public class PlayerMove : MonoBehaviour
         GetInput();
         MovePlayer();
 
-        camAnim.SetBool("isMoving", isMoving);
+        //camAnim.SetBool("isMoving", isMoving);
     }
 
     private void GetInput()
