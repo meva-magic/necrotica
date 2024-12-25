@@ -13,6 +13,7 @@ TagManager:
   - YellowKey
   - RedKey
   - CenterPoint
+  - Projectile
   layers:
   - Default
   - TransparentFX

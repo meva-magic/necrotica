@@ -1332,7 +1332,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: -8679921383154817045}
-  - component: {fileID: 5866666021909216657}
   - component: {fileID: 4289308526360316480}
   - component: {fileID: 5044600011248043876}
   m_Layer: 0
@@ -1359,28 +1358,6 @@ Transform:
   - {fileID: 5465940246521907071}
   m_Father: {fileID: 3476841559365682897}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!95 &5866666021909216657
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132149155446097}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4f1e262b1ed1d9c4d9579dfd54b03488, type: 3}
-  m_Controller: {fileID: 9100000, guid: 07d1375b2df03064cb57004c7cca0985, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &4289308526360316480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1394,7 +1371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
-  animator: {fileID: 5866666021909216657}
+  animator: {fileID: 0}
   range: 5
   verticalRange: 6
   damage: 2
@@ -1829,7 +1806,7 @@ GameObject:
   - component: {fileID: 7327673342706458036}
   - component: {fileID: 9106268310870927818}
   - component: {fileID: 8504655393603705804}
-  - component: {fileID: 2035637744399964585}
+  - component: {fileID: 1427690259591479038}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -1946,8 +1923,8 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
---- !u!65 &2035637744399964585
-BoxCollider:
+--- !u!136 &1427690259591479038
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1961,11 +1938,13 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.99, y: 3.85, z: 1}
+  serializedVersion: 2
+  m_Radius: 0.8
+  m_Height: 2.88
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2715566404302941441
 GameObject:
