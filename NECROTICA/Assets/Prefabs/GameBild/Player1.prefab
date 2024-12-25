@@ -1824,12 +1824,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3476841559365682897}
-  - component: {fileID: 1409716845826912856}
   - component: {fileID: 2653693196344339875}
   - component: {fileID: 7451453174913132777}
   - component: {fileID: 7327673342706458036}
   - component: {fileID: 9106268310870927818}
   - component: {fileID: 8504655393603705804}
+  - component: {fileID: 2035637744399964585}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -1854,20 +1854,6 @@ Transform:
   - {fileID: 1583129864070837253}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &1409716845826912856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2662228964910451131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3116b5ae6eee17b409ab24d9882e8767, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  particleEffect: {fileID: 3342815215213609219, guid: 77d7d7275c77bad488e8cf5610628325, type: 3}
 --- !u!114 &2653693196344339875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1960,6 +1946,27 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!65 &2035637744399964585
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2662228964910451131}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.99, y: 3.85, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2715566404302941441
 GameObject:
   m_ObjectHideFlags: 0

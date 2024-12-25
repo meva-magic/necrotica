@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class SmallSlime : BaseEnemy
 {
@@ -8,7 +9,7 @@ public class SmallSlime : BaseEnemy
     private void Awake()
     {
         // Устанавливаем уникальные параметры
-        health = 4f;
+        health = 2f;
         damage = 5f;
         attackRange = 4f;
         attackCooldown = 2f;
@@ -19,6 +20,12 @@ public class SmallSlime : BaseEnemy
         {
             agent.speed = 3f; // Уникальная скорость SmallSlime
         }
+    }
+
+    public override void Attack()
+    {
+        base.Attack(); // Воспроизведение общего звука атаки из BaseEnemy
+
     }
 
     protected override void Die()

@@ -1,39 +1,49 @@
-/*using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EyeEnemy : BaseEnemy
 {
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private float shootDelay = 3f;
+    [SerializeField] private GameObject projectilePrefab; // Префаб снаряда
+    [SerializeField] private float projectileSpeed = 10f; // Скорость снаряда
+    [SerializeField] private GameObject deathEffect;
 
-    protected override void Initialize()
+    private void Awake()
     {
         health = 15f;
-        damage = 10f;
-        StartCoroutine(ShootAtPlayer());
-    }
+        damage = 10f; // Урон для EyeEnemy
+        attackRange = 18f;
+        attackCooldown = 2f;
 
-    private IEnumerator ShootAtPlayer()
-    {
-        while (true)
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        if (agent != null)
         {
-            yield return new WaitForSeconds(shootDelay);
-
-            if (Vector3.Distance(transform.position, player.position) <= 10f)
-            {
-                Shoot();
-            }
+            agent.speed = 3f; // Уникальная скорость EyeEnemy
         }
     }
 
-    private void Shoot()
+    public override void Attack()
     {
         if (projectilePrefab != null)
         {
+            // Создаём снаряд
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+
+            // Направляем снаряд в сторону игрока
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            rb.linearVelocity = (player.position - transform.position).normalized * 10f;
+            Vector3 direction = (PlayerHealth.instance.transform.position - transform.position).normalized;
+
+            // Заменяем Rigidbody.velocity на Rigidbody.linearVelocity
+            rb.linearVelocity = direction * projectileSpeed; // Используем linearVelocity вместо velocity
+
+            // Уничтожаем снаряд через 5 секунд
             Destroy(projectile, 5f);
         }
     }
-}*/
+
+    protected override void Die()
+    {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Debug.Log("EyeEnemy уничтожен.");
+        Destroy(gameObject);
+    }
+}

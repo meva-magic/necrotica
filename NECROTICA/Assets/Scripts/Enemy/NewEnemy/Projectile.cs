@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float speed = 2f; // Уменьшаем скорость
+    private float damage = 10f;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            AudioManager.instance.Play("SwordSwoosh");
+            Debug.Log("Попал снарядом.");
+            PlayerHealth.instance.TakeDamage((int)damage);
+            Destroy(gameObject);
+        }
     }
 }

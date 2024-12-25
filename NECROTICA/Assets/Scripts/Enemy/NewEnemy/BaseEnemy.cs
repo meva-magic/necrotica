@@ -20,6 +20,7 @@ public abstract class BaseEnemy : MonoBehaviour
     }
 
     public virtual void Attack()
+
     {
         Debug.Log($"{gameObject.name} атакует игрока и наносит {damage} урона!");
         PlayerHealth.instance.TakeDamage((int)damage);

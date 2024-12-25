@@ -12,9 +12,10 @@ public class BigSlime : BaseEnemy
     private void Awake()
     {
         // Установка уникальных параметров для BigSlime
-        health = 4f;
+        health = 6f;
         damage = 10f;
-        attackRange = 4f;
+        attackRange = 4f; 
+        attackCooldown = 3f;
 
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         if (agent != null)
