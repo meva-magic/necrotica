@@ -1,16 +1,18 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class SmallSlime : BaseEnemy
 {
-    protected override void Initialize() { }
+    protected override void Initialize()
+    {
+        health = 20f;
+        damage = 5f;
+    }
 
     private void Update()
     {
-        agent.SetDestination(player.position);
+        if (player != null)
+        {
+            agent.SetDestination(player.position);
+        }
     }
-
-    protected override void Die()
-    {
-        Destroy(gameObject);
-    }
-}
+}*/

@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using UnityEngine;
 
 public class EyeEnemy : BaseEnemy
@@ -8,6 +8,8 @@ public class EyeEnemy : BaseEnemy
 
     protected override void Initialize()
     {
+        health = 15f;
+        damage = 10f;
         StartCoroutine(ShootAtPlayer());
     }
 
@@ -17,7 +19,7 @@ public class EyeEnemy : BaseEnemy
         {
             yield return new WaitForSeconds(shootDelay);
 
-            if (Vector3.Distance(transform.position, player.position) <= 10f) // ��������� �����
+            if (Vector3.Distance(transform.position, player.position) <= 10f)
             {
                 Shoot();
             }
@@ -26,16 +28,12 @@ public class EyeEnemy : BaseEnemy
 
     private void Shoot()
     {
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        rb.linearVelocity = (player.position - transform.position).normalized * 10f; // �������� �������
-        Destroy(projectile, 5f); // ���������� ������ ����� 5 ������
-
-        PlayerHealth.instance.TakeDamage((int)damage);
+        if (projectilePrefab != null)
+        {
+            GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            Rigidbody rb = projectile.GetComponent<Rigidbody>();
+            rb.linearVelocity = (player.position - transform.position).normalized * 10f;
+            Destroy(projectile, 5f);
+        }
     }
-
-    protected override void Die()
-    {
-        Destroy(gameObject);
-    }
-}
+}*/

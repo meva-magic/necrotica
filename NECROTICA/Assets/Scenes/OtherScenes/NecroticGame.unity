@@ -3438,14 +3438,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3666377569026619646, guid: 22eabe5f7ec80c442a0732d7be094149, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2761146646260005731, guid: 22eabe5f7ec80c442a0732d7be094149, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8487060309817385267, guid: 22eabe5f7ec80c442a0732d7be094149, type: 3}
       insertIndex: -1
       addedObject: {fileID: 367488251}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7615270110031307266, guid: 22eabe5f7ec80c442a0732d7be094149, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1750579999}
   m_SourcePrefab: {fileID: 100100000, guid: 22eabe5f7ec80c442a0732d7be094149, type: 3}
 --- !u!1001 &546459396
 PrefabInstance:
@@ -10825,7 +10829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1220895604396795226, guid: 1bf9decaf20bdbe469a2d56dedf11681, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -350
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1751235369518332579, guid: 1bf9decaf20bdbe469a2d56dedf11681, type: 3}
       propertyPath: m_Name
@@ -12740,11 +12744,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739279115}
   m_CullTransparentMesh: 1
+--- !u!1 &1750579991 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7615270110031307266, guid: 22eabe5f7ec80c442a0732d7be094149, type: 3}
+  m_PrefabInstance: {fileID: 540022963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1750579998 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8487060309817385267, guid: 22eabe5f7ec80c442a0732d7be094149, type: 3}
   m_PrefabInstance: {fileID: 540022963}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1750579999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750579991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14fab09edb4d14a429e5c6bd784864fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  damage: 10
+  agent: {fileID: 515040596}
 --- !u!1 &1751557635
 GameObject:
   m_ObjectHideFlags: 0
