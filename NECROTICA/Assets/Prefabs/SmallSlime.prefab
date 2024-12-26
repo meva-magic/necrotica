@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3733706535492600266}
   - component: {fileID: 8333471900679535396}
   - component: {fileID: 3748362612945470900}
+  - component: {fileID: 260255091798228567}
   m_Layer: 0
   m_Name: SmallSlimeSprite
   m_TagString: Untagged
@@ -101,6 +102,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canLookVertically: 0
+--- !u!95 &260255091798228567
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28603818215383736}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9e67618e9f32e964a8afeaa5fa2dc061, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &29368251560024871
 GameObject:
   m_ObjectHideFlags: 0

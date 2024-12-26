@@ -5,9 +5,8 @@ public class EyeEnemy : BaseEnemy
 {
     [SerializeField] private GameObject projectilePrefab; // Префаб снаряда
     [SerializeField] private float projectileSpeed = 10f; // Скорость движения снаряда
-    [SerializeField] private GameObject deathEffect;
-
-    private Animator animator;
+    [SerializeField] private GameObject deathEffect;      // Эффект смерти
+    [SerializeField] private GameObject skeletonBloodPrefab; // Префаб SkeletonBlood
 
     private void Awake()
     {
@@ -21,16 +20,7 @@ public class EyeEnemy : BaseEnemy
         {
             agent.speed = 3f; // Уникальная скорость EyeEnemy
         }
-
-        // Получаем компонент Animator
-        animator = GetComponent<Animator>();
-        if (animator == null)
-        {
-            Debug.LogWarning("Animator не найден на объекте EyeEnemy.");
-        }
     }
-
-
 
     public override void Attack()
     {
@@ -57,8 +47,18 @@ public class EyeEnemy : BaseEnemy
 
     protected override void Die()
     {
-        PlayerHealth.instance.RestoreHealth(30);
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        // Спавним SkeletonBlood
+        if (skeletonBloodPrefab != null)
+        {
+            Instantiate(skeletonBloodPrefab, transform.position + Vector3.down * 2f, Quaternion.identity);
+        }
+
+        // Спавним эффект смерти
+        if (deathEffect != null)
+        {
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+        }
+
         Debug.Log("EyeEnemy уничтожен.");
         Destroy(gameObject);
     }
