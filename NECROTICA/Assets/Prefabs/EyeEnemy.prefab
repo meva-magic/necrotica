@@ -55,7 +55,7 @@ MonoBehaviour:
   attackCooldown: 3
   projectilePrefab: {fileID: 6911869293466527970, guid: 5c65e6bbcebc4554c81770015f783a8a, type: 3}
   projectileSpeed: 10
-  deathEffect: {fileID: 1971211495131810806, guid: f4aab4d5e8a62924595e33b06b1aff7b, type: 3}
+  deathEffect: {fileID: 5307026712614216060, guid: f147d6f09bfd75244b414ecb0c89acd9, type: 3}
   skeletonBloodPrefab: {fileID: 604909590252999085, guid: 98d26a5ee7d76674db80934b9789b65f, type: 3}
 --- !u!114 &1466442599610389327
 MonoBehaviour:

@@ -15,6 +15,7 @@ TagManager:
   - CenterPoint
   - Projectile
   - Enemy
+  - UI
   layers:
   - Default
   - TransparentFX

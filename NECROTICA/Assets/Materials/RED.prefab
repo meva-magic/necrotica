@@ -61,12 +61,12 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5601036089067188821, guid: 924e772d99fea934f8c7dff7c622e78a, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6756af14257ff564eb9d3ae2d0fc6c6b, type: 2}
+      objectReference: {fileID: 2100000, guid: 7465b83326cbda44c8eed09f7c3a5ff1, type: 2}
     - target: {fileID: 5601036089067188822, guid: 924e772d99fea934f8c7dff7c622e78a, type: 3}
       propertyPath: m_Name
-      value: BloodParticles Variant
+      value: RED
       objectReference: {fileID: 0}
     - target: {fileID: 5601036089067188827, guid: 924e772d99fea934f8c7dff7c622e78a, type: 3}
       propertyPath: m_LocalPosition.x
