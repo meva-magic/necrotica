@@ -20,6 +20,7 @@ public class Sword : MonoBehaviour
     [SerializeField] private LayerMask enemyLayerMask;
 
     private bool canAttack = true;
+    public bool hasSword = false; // Новая переменная состояния
 
     private void Start()
     {
@@ -30,8 +31,12 @@ public class Sword : MonoBehaviour
 
     private void Update()
     {
+        if (!hasSword)
+            return; // Атака невозможна без меча
+
         if (Input.GetMouseButtonDown(0) && canAttack && Time.time > nextTimeToHit)
         {
+            Debug.Log("Атака");
             if (animator != null)
             {
                 canAttack = false;

@@ -30,6 +30,7 @@ public class SmallSlime : BaseEnemy
 
     protected override void Die()
     {
+        PlayerHealth.instance.RestoreHealth(10);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         Debug.Log("SmallSlime уничтожен.");
         Destroy(gameObject);

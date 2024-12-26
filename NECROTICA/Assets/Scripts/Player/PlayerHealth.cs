@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 100f;
     public float health;
 
-    private float decreaseHealthAmount = 2;
+    private float decreaseHealthAmount = 0.3f;
 
     [SerializeField] public float maxArmor = 100f;
     [SerializeField] private float armor;

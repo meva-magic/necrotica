@@ -15,6 +15,9 @@ public class Projectile : MonoBehaviour
             PlayerHealth.instance.TakeDamage((int)damage); // Наносим урон игроку
             Destroy(gameObject); // Уничтожаем снаряд
         }
-
+        if (!other.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

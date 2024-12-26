@@ -7,9 +7,11 @@ public class EyeEnemy : BaseEnemy
     [SerializeField] private float projectileSpeed = 10f; // Скорость движения снаряда
     [SerializeField] private GameObject deathEffect;
 
+    private Animator animator;
+
     private void Awake()
     {
-        health = 4f;
+        health = 6f;
         damage = 10f; // Урон для EyeEnemy
         attackRange = 18f;
         attackCooldown = 2f;
@@ -19,7 +21,16 @@ public class EyeEnemy : BaseEnemy
         {
             agent.speed = 3f; // Уникальная скорость EyeEnemy
         }
+
+        // Получаем компонент Animator
+        animator = GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogWarning("Animator не найден на объекте EyeEnemy.");
+        }
     }
+
+
 
     public override void Attack()
     {
@@ -46,6 +57,7 @@ public class EyeEnemy : BaseEnemy
 
     protected override void Die()
     {
+        PlayerHealth.instance.RestoreHealth(30);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         Debug.Log("EyeEnemy уничтожен.");
         Destroy(gameObject);

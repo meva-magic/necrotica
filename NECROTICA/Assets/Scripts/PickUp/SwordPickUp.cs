@@ -3,10 +3,10 @@ using UnityEngine;
 public class SwordPickUp : MonoBehaviour
 {
     public GameObject Dialogue;
-    [SerializeField] private GameObject pickUpEffect; 
-    [SerializeField] private GameObject playerSwordObject; 
-    [SerializeField] private Transform player; 
-    [SerializeField] private float pickUpRange = 2.0f; 
+    [SerializeField] private GameObject pickUpEffect;
+    [SerializeField] private GameObject playerSwordObject;
+    [SerializeField] private Transform player;
+    [SerializeField] private float pickUpRange = 2.0f;
 
     private bool isPickedUp = false;
 
@@ -25,7 +25,7 @@ public class SwordPickUp : MonoBehaviour
 
         if (player == null)
         {
-            Debug.LogError("Player Transform �� ��������!");
+            Debug.LogError("Player Transform не назначен!");
             return;
         }
 
@@ -52,6 +52,7 @@ public class SwordPickUp : MonoBehaviour
             if (swordScript != null)
             {
                 swordScript.enabled = true;
+                swordScript.hasSword = true; // Разрешаем атаку
             }
         }
 

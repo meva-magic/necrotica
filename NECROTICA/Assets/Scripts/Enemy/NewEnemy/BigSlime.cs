@@ -12,7 +12,7 @@ public class BigSlime : BaseEnemy
     private void Awake()
     {
         // Установка уникальных параметров для BigSlime
-        health = 6f;
+        health = 4f;
         damage = 10f;
         attackRange = 4f; 
         attackCooldown = 3f;
@@ -26,6 +26,7 @@ public class BigSlime : BaseEnemy
 
     protected override void Die()
     {
+        PlayerHealth.instance.RestoreHealth(20);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         // Спавним двух маленьких слизней после смерти
         if (smallSlimePrefab != null)
