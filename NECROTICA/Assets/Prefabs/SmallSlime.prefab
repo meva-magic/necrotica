@@ -68,7 +68,7 @@ MonoBehaviour:
   damage: 10
   attackRange: 2
   attackCooldown: 3
-  deathEffect: {fileID: 1971211495131810806, guid: f4aab4d5e8a62924595e33b06b1aff7b, type: 3}
+  deathEffect: {fileID: 5307026712614216060, guid: 8486ab985a3b76546b550c872a84292e, type: 3}
 --- !u!114 &1038907536040419751
 MonoBehaviour:
   m_ObjectHideFlags: 0
