@@ -6,6 +6,8 @@ public class SmallSlime : BaseEnemy
 {
     [SerializeField] private GameObject deathEffect;
 
+    private Animator animator; // Ссылка на Animator
+
     private void Awake()
     {
         // Устанавливаем уникальные параметры
@@ -19,6 +21,29 @@ public class SmallSlime : BaseEnemy
         if (agent != null)
         {
             agent.speed = 3f; // Уникальная скорость SmallSlime
+        }
+
+        animator = GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogWarning("Animator не найден на объекте EyeEnemy.");
+        }
+    }
+
+    public override void TakeDamage(float damageAmount)
+    {
+        base.TakeDamage(damageAmount);
+
+        // Проигрываем анимацию получения урона
+        if (animator != null)
+        {
+            animator.SetTrigger("TakeDamage");
+        }
+
+        // Проверяем, умер ли враг
+        if (health <= 0)
+        {
+            Die();
         }
     }
 

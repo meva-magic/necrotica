@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 459b8d8f8bf7a814a9f7bc134764dc7d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8962264, g: 0.13591404, b: 0.04650232, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9273aafcef2c41b4b89fc0451030b111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   damage: 10
 --- !u!135 &9076135404184607220
 SphereCollider:

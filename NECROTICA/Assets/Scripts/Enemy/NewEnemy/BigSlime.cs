@@ -5,14 +5,15 @@ public class BigSlime : BaseEnemy
 {
     [SerializeField] private GameObject smallSlimePrefab;
     [SerializeField] private GameObject deathEffect;
-    [SerializeField] private float spawnOffset = 1.5f;   
+    [SerializeField] private float spawnOffset = 1.5f;
+    private Animator animator;
 
     private EnemyAI enemyAI;                              
 
     private void Awake()
     {
         // Установка уникальных параметров для BigSlime
-        health = 4f;
+        health = 6f;
         damage = 10f;
         attackRange = 4f; 
         attackCooldown = 3f;
@@ -21,6 +22,23 @@ public class BigSlime : BaseEnemy
         if (agent != null)
         {
             agent.speed = 2f; // Уникальная скорость SmallSlime
+        }
+
+        animator = GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogWarning("Animator не найден на объекте EyeEnemy.");
+        }
+    }
+
+    public override void TakeDamage(float damageAmount)
+    {
+        base.TakeDamage(damageAmount);
+
+        // Проигрываем анимацию получения урона
+        if (animator != null)
+        {
+            animator.SetTrigger("hit-bigslame");
         }
     }
 

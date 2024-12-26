@@ -8,6 +8,8 @@ public class EyeEnemy : BaseEnemy
     [SerializeField] private GameObject deathEffect;      // Эффект смерти
     [SerializeField] private GameObject skeletonBloodPrefab; // Префаб SkeletonBlood
 
+    private Animator animator; // Ссылка на Animator
+
     private void Awake()
     {
         health = 6f;
@@ -19,6 +21,29 @@ public class EyeEnemy : BaseEnemy
         if (agent != null)
         {
             agent.speed = 3f; // Уникальная скорость EyeEnemy
+        }
+
+        animator = GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogWarning("Animator не найден на объекте EyeEnemy.");
+        }
+    }
+
+    public override void TakeDamage(float damageAmount)
+    {
+        base.TakeDamage(damageAmount);
+
+        // Проигрываем анимацию получения урона
+        if (animator != null)
+        {
+            animator.SetTrigger("TakeDamageEye");
+        }
+
+        // Проверяем, умер ли враг
+        if (health <= 0)
+        {
+            Die();
         }
     }
 

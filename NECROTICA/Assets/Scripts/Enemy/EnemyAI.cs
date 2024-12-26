@@ -21,19 +21,53 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        player = Object.FindFirstObjectByType<PlayerMove>().transform;
-        agent = GetComponent<NavMeshAgent>();
-        baseEnemy = GetComponent<BaseEnemy>();
+        InitializeComponents();
     }
 
     private void Update()
     {
+        if (player == null || baseEnemy == null || agent == null)
+        {
+            Debug.LogWarning("EnemyAI: Missing required components or references. Attempting to reinitialize.");
+            InitializeComponents(); // Повторная попытка инициализации
+            return;
+        }
+
         HandleState();
         UpdateCooldown();
     }
 
+    private void InitializeComponents()
+    {
+        // Ищем игрока
+        var playerObject = Object.FindFirstObjectByType<PlayerMove>();
+        if (playerObject != null)
+        {
+            player = playerObject.transform;
+        }
+        else
+        {
+            Debug.LogWarning("EnemyAI: Player not found in the scene.");
+        }
+
+        // Получаем необходимые компоненты
+        agent = GetComponent<NavMeshAgent>();
+        baseEnemy = GetComponent<BaseEnemy>();
+
+        if (agent == null)
+        {
+            Debug.LogWarning("EnemyAI: NavMeshAgent is missing.");
+        }
+        if (baseEnemy == null)
+        {
+            Debug.LogWarning("EnemyAI: BaseEnemy component is missing.");
+        }
+    }
+
     private void HandleState()
     {
+        if (player == null) return; // Если игрок отсутствует, пропускаем обработку
+
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         switch (currentState)
@@ -41,7 +75,6 @@ public class EnemyAI : MonoBehaviour
             case EnemyState.Idle:
                 if (distanceToPlayer <= awarenessRadius)
                 {
-
                     ChangeState(EnemyState.Chasing);
                 }
                 break;
@@ -49,33 +82,27 @@ public class EnemyAI : MonoBehaviour
             case EnemyState.Chasing:
                 if (distanceToPlayer > awarenessRadius)
                 {
-                    // Если игрок вышел из зоны видимости, враг возвращается в Idle
                     ChangeState(EnemyState.Idle);
                 }
                 else if (distanceToPlayer <= baseEnemy.attackRange)
                 {
-                    // Если игрок в зоне атаки, переключаемся в Attacking
                     ChangeState(EnemyState.Attacking);
                 }
                 else
                 {
-                    // Иначе продолжаем преследовать игрока
                     ChasePlayer();
                 }
                 break;
 
             case EnemyState.Attacking:
-                Debug.Log("Attacking player...");
                 agent.isStopped = true;
                 if (distanceToPlayer > baseEnemy.attackRange)
                 {
-                    // Если игрок вне радиуса атаки, возвращаемся к преследованию
                     agent.isStopped = false;
                     ChangeState(EnemyState.Chasing);
                 }
                 else if (attackCooldownTimer <= 0f)
                 {
-                    // Атакуем игрока
                     baseEnemy.Attack();
                     attackCooldownTimer = baseEnemy.attackCooldown;
                 }
@@ -85,9 +112,8 @@ public class EnemyAI : MonoBehaviour
 
     private void ChasePlayer()
     {
-        if (!agent.isStopped)
+        if (agent != null && !agent.isStopped)
         {
-            Debug.Log("Chasing player...");
             agent.SetDestination(player.position);
         }
     }
@@ -102,7 +128,6 @@ public class EnemyAI : MonoBehaviour
 
     private void ChangeState(EnemyState newState)
     {
-        Debug.Log($"Changing state from {currentState} to {newState}");
         currentState = newState;
     }
 }
